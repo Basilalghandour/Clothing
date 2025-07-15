@@ -244,11 +244,12 @@
             transform: translateY(-3px);
             box-shadow: 0 6px 15px rgba(0,0,0,0.2);
             text-decoration: none;
+            color: #000000 !important; /* Keep text black on hover */
         }
 
         .button-small {
             display: inline-block;
-            background-color: #0FA4AF; /* Vibrant Green Accent */
+            background-color: #00724a; /* Green */
             color: #000000; /* Black text */
             padding: 10px 20px;
             border-radius: 6px;
@@ -260,10 +261,11 @@
         }
 
         .button-small:hover {
-            background-color: #0d838b; /* Darker Vibrant Green on hover */
+            background-color: #004c31; /* Darker Green on hover */
             transform: translateY(-2px);
             box-shadow: 0 6px 15px rgba(0,0,0,0.2);
             text-decoration: none;
+            color: #000000; /* Keep text black on hover */
         }
 
         /* Section Padding (retained for consistency) */
@@ -359,13 +361,13 @@
         /* Spray Paint Signs for Featured Look Section */
         .spray-sign {
             font-family: 'Permanent Marker', cursive;
-            color: #00724a; /* Green */
+            color: #00724a; /* Reverted to Green */
             position: absolute;
             user-select: none;
             pointer-events: none;
             white-space: nowrap;
             text-shadow: 2px 2px 5px rgba(0,0,0,0.1);
-            opacity: 0.15;
+            opacity: 0.3; /* Adjusted to be less visible */
             z-index: 5;
         }
 
@@ -395,7 +397,7 @@
             top: 15%;
             right: 20%;
             transform: rotate(25deg);
-            opacity: 0.12;
+            opacity: 0.25; /* Adjusted for consistency with new base opacity */
         }
 
         .spray-sign.spray-5 {
@@ -403,7 +405,7 @@
             bottom: 20%;
             left: 15%;
             transform: rotate(-15deg);
-            opacity: 0.18;
+            opacity: 0.35; /* Adjusted for consistency with new base opacity */
         }
 
 
@@ -480,108 +482,79 @@
             z-index: 1;
         }
 
-        .product-ladder-grid {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 60px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .product-item-ladder {
-            background-color: #000000; /* Black */
-            border-radius: 10px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-            width: 90%;
-            max-width: 800px;
-            padding: 25px;
-            display: flex;
-            flex-direction: row;
-            align-items: flex-start;
-            gap: 25px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            height: auto;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-
-            position: relative;
-            z-index: 2;
-        }
-
-        /* Class to trigger animation when in view */
-        .product-item-ladder.is-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .product-item-ladder:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 25px rgba(0,0,0,0.15);
-        }
-
-        /* Ladder Effect: Shift left/right */
-        .product-item-ladder:nth-child(odd) {
-            align-self: flex-start;
-            margin-left: 5%;
-        }
-
-        .product-item-ladder:nth-child(even) {
-            align-self: flex-end;
-            margin-right: 5%;
-            flex-direction: row-reverse;
-        }
-
-        .product-image-wrapper {
-            flex-shrink: 0;
-            width: 25%;
-            min-width: 150px;
+        /* NEW STYLES FOR PRODUCT SHOWCASE PHONES */
+        .phone-display-container {
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 0;
+            gap: 20px; /* Space between phones */
+            margin-top: 50px;
+            perspective: 1000px; /* For 3D transformations */
+            flex-wrap: wrap; /* Allow wrapping on smaller screens */
         }
 
-        .product-image-wrapper img {
-            max-width: 100%;
-            height: auto;
-            max-height: 200px;
-            border-radius: 5px;
-            object-fit: contain;
+        .iphone-frame {
+            position: relative;
+            /* Adjust these values to match the overall dimensions of your iPhone PNG */
+            width: 300px; /* Example: increase from 250px */
+            height: 600px; /* Example: increase from 500px */
+            
+           
+            transition: transform 0.5s ease-out;
         }
 
-        .product-content {
-            flex-grow: 1;
-            width: auto;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+        /* First phone tilted to the right */
+        .iphone-frame:first-child {
+        }
+
+        /* Second phone tilted to the left */
+        .iphone-frame:last-child {
+            transform: rotateY(-15deg) rotateX(5deg) translateX(-10px); /* Adjust tilt as needed */
+        }
+
+        .iphone-frame img.phone-png {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
             height: 100%;
-            text-align: left;
+            object-fit: cover; /* Ensures the PNG fits without distortion */
+            z-index: 2; /* Place PNG on top of the content */
         }
 
-        .product-content h3 {
-            font-family: 'Passion One', sans-serif;
-            margin-top: 0;
-            margin-bottom: 10px;
-            text-align: left;
-            color: #00724a; /* Green for product details title */
-            font-size: 1.8em;
+        .iphone-content {
+            position: absolute;
+            /* Adjust these percentages and positioning based on your specific iPhone PNG's screen area */
+            top: 50%; /* You might need to adjust this, e.g., to 48% or 52% */
+            left: 50%; /* You might need to adjust this, e.g., to 49% or 51% */
+            width: 80%; /* Example: If the screen takes up 80% of the frame's width */
+            height: 88%; /* Example: If the screen takes up 88% of the frame's height */
+            transform: translate(-50%, -50%);
+            overflow: hidden;
+            border-radius: 30px; /* Adjust to match the curvature of your PNG's screen */
+            background-color: #fff; /* Background for the product image */
+            z-index: 1; /* Place content behind the PNG frame */
         }
 
-        .product-content p {
-            font-size: 1.05em;
-            color: #00724a; /* Green for product content text */
-            line-height: 1.7;
-            margin-bottom: 20px;
-            flex-grow: 1;
-            text-align: left;
+        .iphone-content img.product-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Cover the content area */
+            display: block;
+            transform-origin: center center; /* Ensure rotation is from the center */
+            transition: transform 0.3s ease; /* Smooth transition for tilt */
         }
 
-        .product-content .button-small {
-            align-self: flex-start;
+        /* Tilt the image in the LEFT phone (first-child) a bit to the RIGHT (3D tilt using rotateY) */
+        .iphone-frame:first-child .iphone-content img.product-image {
         }
+
+        /* Tilt the image in the RIGHT phone (last-child) a bit to the LEFT (3D tilt using rotateY) */
+        .iphone-frame:last-child .iphone-content img.product-image {
+            transform: rotateY(5deg); /* Adjusted to rotate Y for 3D tilt */
+        }
+        /* END NEW STYLES */
+
 
         /* Footer Styles */
         footer {
@@ -792,6 +765,24 @@
                 max-width: 90%;
                 max-height: 250px;
             }
+            /* Adjust phone display on smaller screens */
+            .iphone-frame {
+                width: 200px;
+                height: 400px;
+            }
+            .iphone-frame:first-child {
+                transform: rotateY(10deg) rotateX(5deg) translateX(5px);
+            }
+            .iphone-frame:last-child {
+                transform: rotateY(-10deg) rotateX(5deg) translateX(-5px);
+            }
+            /* Adjust image tilt on smaller screens */
+            .iphone-frame:first-child .iphone-content img.product-image {
+                transform: rotateY(-3deg);
+            }
+            .iphone-frame:last-child .iphone-content img.product-image {
+                transform: rotateY(3deg);
+            }
         }
 
         @media (max-width: 768px) {
@@ -927,40 +918,20 @@
                 grid-template-columns: 1fr;
             }
 
-            /* Product Ladder Mobile Adjustments */
-            .product-item-ladder {
-                flex-direction: column !important;
-                align-self: center !important;
-                margin: 0 auto 40px auto !important;
-                width: 95%;
-                max-width: 400px;
-                padding: 15px;
-                gap: 15px;
-                height: auto;
+            /* New phone display adjustments for mobile */
+            .phone-display-container {
+                flex-direction: column; /* Stack phones vertically on mobile */
+                gap: 30px;
             }
-            .product-image-wrapper {
-                width: 80%;
-                max-width: 250px;
-                height: auto;
-                min-width: unset;
-                padding: 0;
+            .iphone-frame {
+                transform: none !important; /* Remove phone tilt on mobile for better stacking */
+                width: 220px;
+                height: 440px;
             }
-            .product-image-wrapper img {
-                max-height: 180px;
-                width: auto;
-                margin: 0 auto;
-            }
-            .product-content {
-                padding-left: 0;
-                text-align: center;
-                align-items: center;
-                height: auto;
-            }
-            .product-content h3,
-            .product-content p,
-            .product-content .button-small {
-                text-align: center;
-                align-self: center;
+            /* Remove image tilt on mobile for better visibility if needed */
+            .iphone-frame:first-child .iphone-content img.product-image,
+            .iphone-frame:last-child .iphone-content img.product-image {
+                transform: none;
             }
 
             footer .container {
@@ -1047,50 +1018,15 @@
 
         <section id="product-showcase">
             <div class="container">
-                <h2>Your Next Obsession</h2>
-                <div class="product-ladder-grid">
-                    <div class="product-item-ladder">
-                        <div class="product-image-wrapper">
-                            <img src="https://placehold.co/600x400/AFDDE5/964734?text=Graphic+Tee" alt="Oversized Graphic Tee">
-                        </div>
-                        <div class="product-content">
-                            <h3>Oversized "Dreamer" Graphic Tee</h3>
-                            <p>Express yourself with this super soft, oversized tee featuring a unique "Dreamer" graphic. Perfect for chilling or making a statement.</p>
-                            <a href="product-detail-tee.html" class="button-small">Grab Yours</a>
-                        </div>
+                <h2>Check our Mobile app!</h2>
+                <div class="phone-display-container">
+                    <div class="iphone-frame" style="height: 550px;">
+                        <img src="imgs/xx.png" alt="iPhone Frame" class="phone-png">
+                        
                     </div>
-
-                    <div class="product-item-ladder">
-                        <div class="product-image-wrapper">
-                            <img src="https://placehold.co/600x400/AFDDE5/964734?text=Cargo+Pants" alt="Utility Cargo Pants">
-                        </div>
-                        <div class="product-content">
-                            <h3>Utility Street Cargo Pants</h3>
-                            <p>Functional and fashionable, these cargo pants are designed for your everyday adventures. Plenty of pockets for all your essentials.</p>
-                            <a href="product-detail-cargo.html" class="button-small">Level Up</a>
-                        </div>
-                    </div>
-
-                    <div class="product-item-ladder">
-                        <div class="product-image-wrapper">
-                            <img src="https://placehold.co/600x400/AFDDE5/964734?text=Bucket+Hat" alt="Retro Bucket Hat">
-                        </div>
-                        <div class="product-content">
-                            <h3>Retro Vibe Bucket Hat</h3>
-                            <p>Top off your look with this cool bucket hat. A must-have accessory for sunny days and effortless style.</p>
-                            <a href="product-detail-hat.html" class="button-small">Add to Cart</a>
-                        </div>
-                    </div>
-
-                    <div class="product-item-ladder">
-                        <div class="product-image-wrapper">
-                            <img src="https://placehold.co/600x400/AFDDE5/964734?text=Chunky+Sneakers" alt="Chunky Platform Sneakers">
-                        </div>
-                        <div class="product-content">
-                            <h3>Cloud-Walk Chunky Sneakers</h3>
-                            <p>Step up your game with these comfy and stylish chunky platform sneakers. Perfect for any outfit, any day.</p>
-                            <a href="product-detail-sneakers.html" class="button-small">Shop Kicks</a>
-                        </div>
+                    <div class="iphone-frame" style="margin-left: 70px;">
+                        <img src="imgs/3d1.png" alt="iPhone Frame" class="phone-png">
+                        
                     </div>
                 </div>
             </div>
@@ -1102,20 +1038,20 @@
                 <h2>Trending Now</h2>
                 <div class="product-grid">
                     <div class="product-item">
-                        <img src="https://placehold.co/600x400/AFDDE5/003135?text=Distressed+Jeans" alt="Distressed Straight-Leg Jeans">
-                        <h3>Distressed Straight-Leg Jeans</h3>
-                        <p>Your go-to denim for that effortlessly cool, lived-in look. Perfect with any top.</p>
+                        <img src="imgs/skirt.png" alt="Plaid Skater Dress">
+                        <h3>Plaid Skater Dress</h3>
+                        <p>Cozy, stylish, and perfect for layering. Get that relaxed fit you love.</p>
                         <a href="#" class="button-small view-details-btn" data-product-id="distressed-jeans">Check It Out</a>
                     </div>
                     <div class="product-item">
-                        <img src="https://placehold.co/600x400/AFDDE5/003135?text=Cropped+Hoodie" alt="Oversized Cropped Hoodie">
-                        <h3>Oversized Cropped Hoodie</h3>
-                        <p>Cozy, stylish, and perfect for layering. Get that relaxed fit you love.</p>
+                        <img src="imgs/jeans0.png" alt="Distressed Straight-Leg Jeans">
+                        <h3>Distressed Straight-Leg Jeans</h3>
+                        <p>Your go-to denim for that effortlessly cool, lived-in look. Perfect with any top.</p>
                         <a href="#" class="button-small view-details-btn" data-product-id="cropped-hoodie">See More</a>
                     </div>
                     <div class="product-item">
-                        <img src="https://placehold.co/600x400/AFDDE5/003135?text=Skater+Dress" alt="Plaid Skater Dress">
-                        <h3>Plaid Skater Dress</h3>
+                        <img src="imgs/skirt.png" alt="Oversized Cropped Hoodie">
+                        <h3>Oversized Cropped Hoodie</h3>
                         <p>Rock this classic plaid skater dress for an edgy yet playful vibe.</p>
                         <a href="#" class="button-small view-details-btn" data-product-id="skater-dress">View Details</a>
                     </div>
@@ -1192,7 +1128,6 @@
             });
 
             // Intersection Observer for product fade-in animation
-            const productItems = document.querySelectorAll('.product-item-ladder');
             const bestSellerItems = document.querySelectorAll('#featured-products .product-item');
 
             const observerOptions = {
@@ -1209,10 +1144,6 @@
                     }
                 });
             }, observerOptions);
-
-            productItems.forEach(item => {
-                productObserver.observe(item);
-            });
 
             bestSellerItems.forEach(item => {
                 productObserver.observe(item);
