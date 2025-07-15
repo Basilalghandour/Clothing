@@ -488,13 +488,16 @@
             justify-content: center;
             align-items: center;
             gap: 20px; /* Space between phones */
-            margin-top: 50px;
+            margin-top: 20px;
             perspective: 1000px; /* For 3D transformations */
             flex-wrap: wrap; /* Allow wrapping on smaller screens */
         }
 
         .iphone-frame {
             position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             /* Adjust these values to match the overall dimensions of your iPhone PNG */
             width: 300px; /* Example: increase from 250px */
             height: 600px; /* Example: increase from 500px */
@@ -1018,13 +1021,9 @@
 
         <section id="product-showcase">
             <div class="container">
-                <h2>Check our Mobile app!</h2>
+                <h2 style="margin-top: 0%; margin-bottom:0%">Check our Mobile app!</h2>
                 <div class="phone-display-container">
-                    <div class="iphone-frame" style="height: 550px;">
-                        <img src="imgs/xx.png" alt="iPhone Frame" class="phone-png">
-                        
-                    </div>
-                    <div class="iphone-frame" style="margin-left: 70px;">
+                    <div class="iphone-frame">
                         <img src="imgs/3d1.png" alt="iPhone Frame" class="phone-png">
                         
                     </div>
@@ -1041,16 +1040,16 @@
                         <img src="imgs/skirt.png" alt="Plaid Skater Dress">
                         <h3>Plaid Skater Dress</h3>
                         <p>Cozy, stylish, and perfect for layering. Get that relaxed fit you love.</p>
-                        <a href="#" class="button-small view-details-btn" data-product-id="distressed-jeans">Check It Out</a>
+                        <a href="#" class="button-small view-details-btn" data-product-id="distressed-jeans">View Details</a>
                     </div>
                     <div class="product-item">
-                        <img src="imgs/jeans0.png" alt="Distressed Straight-Leg Jeans">
-                        <h3>Distressed Straight-Leg Jeans</h3>
-                        <p>Your go-to denim for that effortlessly cool, lived-in look. Perfect with any top.</p>
-                        <a href="#" class="button-small view-details-btn" data-product-id="cropped-hoodie">See More</a>
+                        <img src="imgs/mm.png" alt="Distressed Straight-Leg Jeans">
+                        <h3>Polo T-shirt</h3>
+                        <p>Your go-to denim for that effortlessly cool, lived-in look. Perfect with any pants.</p>
+                        <a href="#" class="button-small view-details-btn" data-product-id="cropped-hoodie">View Details</a>
                     </div>
                     <div class="product-item">
-                        <img src="imgs/skirt.png" alt="Oversized Cropped Hoodie">
+                        <img src="imgs/m3.png" alt="Oversized Cropped Hoodie">
                         <h3>Oversized Cropped Hoodie</h3>
                         <p>Rock this classic plaid skater dress for an edgy yet playful vibe.</p>
                         <a href="#" class="button-small view-details-btn" data-product-id="skater-dress">View Details</a>
