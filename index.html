@@ -483,12 +483,46 @@
         }
 
         /* NEW STYLES FOR PRODUCT SHOWCASE PHONES */
+        .app-showcase-content { /* New wrapper for QR, Phone, and Benefits */
+            display: flex;
+            justify-content: flex-end; /* Pushed the whole section to the right */
+            align-items: center;
+            gap: 50px; /* Space between sections */
+            margin-top: 40px;
+            flex-wrap: wrap; /* Allow wrapping on smaller screens */
+            padding-right: 50px; /* Add padding to push content further from the right edge */
+        }
+
+        .qr-discount-section {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            max-width: 200px; /* Adjust as needed */
+        }
+
+        .qr-code-img {
+            width: 150px; /* Adjust size of QR code */
+            height: 150px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .discount-text {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5em;
+            color: #00724a; /* Green */
+            margin-top: 10px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
         .phone-display-container {
             display: flex;
             justify-content: center;
             align-items: center;
             gap: 20px; /* Space between phones */
-            margin-top: 20px;
             perspective: 1000px; /* For 3D transformations */
             flex-wrap: wrap; /* Allow wrapping on smaller screens */
         }
@@ -522,7 +556,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover; /* Ensures the PNG fits without distortion */
-            z-index: 2; /* Place PNG on top of the content */
+            z-index: 10; /* Changed from 2 to 10 to be higher than spray signs */
         }
 
         .iphone-content {
@@ -536,7 +570,7 @@
             overflow: hidden;
             border-radius: 30px; /* Adjust to match the curvature of your PNG's screen */
             background-color: #fff; /* Background for the product image */
-            z-index: 1; /* Place content behind the PNG frame */
+            z-index: 9; /* Changed from 1 to 9 to be higher than spray signs, but below the phone frame */
         }
 
         .iphone-content img.product-image {
@@ -555,6 +589,30 @@
         /* Tilt the image in the RIGHT phone (last-child) a bit to the LEFT (3D tilt using rotateY) */
         .iphone-frame:last-child .iphone-content img.product-image {
             transform: rotateY(5deg); /* Adjusted to rotate Y for 3D tilt */
+        }
+
+        .app-benefits-section {
+            text-align: left;
+            max-width: 500px; /* Increased from 250px to 500px for wider lines */
+            padding: 20px;
+            color: #00724a; /* Green text */
+            flex-grow: 1; /* Allow it to grow and fill space */
+            margin-left: auto; /* Push it to the right */
+        }
+
+        .app-benefits-section h3 {
+            font-family: 'Passion One', sans-serif;
+            font-size: 2em;
+            color: #00724a; /* Green */
+            margin-bottom: 15px;
+            text-align: left; /* Align title left within its section */
+        }
+
+        .app-benefits-section p {
+            font-size: 1.3em; /* Increased from 1.1em to 1.3em for larger text */
+            line-height: 1.7;
+            color: #00724a; /* Green for paragraph text */
+            text-align: left;
         }
         /* END NEW STYLES */
 
@@ -588,12 +646,6 @@
         .footer-logo a:hover {
             color: #ffffff; /* White on hover */
             text-decoration: none;
-        }
-
-        .footer-rights {
-            font-size: 0.9em;
-            color: #000000; /* Black */
-            margin: 0;
         }
 
         .social-icons {
@@ -769,6 +821,23 @@
                 max-height: 250px;
             }
             /* Adjust phone display on smaller screens */
+            .app-showcase-content {
+                flex-direction: column; /* Stack QR, Phone, and Benefits vertically on smaller screens */
+                padding-right: 0; /* Remove right padding on mobile */
+                justify-content: center; /* Center content on mobile */
+            }
+
+            .qr-discount-section {
+                margin-bottom: 30px; /* Add space below QR on stacked layout */
+                max-width: 100%;
+            }
+            .app-benefits-section {
+                margin-top: 30px; /* Add space above benefits on stacked layout */
+                max-width: 100%;
+                margin-left: initial; /* Reset margin-left: auto for mobile */
+            }
+
+
             .iphone-frame {
                 width: 200px;
                 height: 400px;
@@ -779,12 +848,10 @@
             .iphone-frame:last-child {
                 transform: rotateY(-10deg) rotateX(5deg) translateX(-5px);
             }
-            /* Adjust image tilt on smaller screens */
-            .iphone-frame:first-child .iphone-content img.product-image {
-                transform: rotateY(-3deg);
-            }
+            /* Remove image tilt on mobile for better visibility if needed */
+            .iphone-frame:first-child .iphone-content img.product-image,
             .iphone-frame:last-child .iphone-content img.product-image {
-                transform: rotateY(3deg);
+                transform: none;
             }
         }
 
@@ -981,6 +1048,7 @@
                         <a href="#">Shop by Style</a>
                         <a href="#">Shop by Trend</a>
                         <a href="#">Exclusive Drops</a>
+                    <a href="store.html">Store</a>
                     </div>
                 </li>
                 <li class="dropdown">
@@ -1022,13 +1090,28 @@
         <section id="product-showcase">
             <div class="container">
                 <h2 style="margin-top: 0%; margin-bottom:0%">Check our Mobile app!</h2>
-                <div class="phone-display-container">
-                    <div class="iphone-frame">
-                        <img src="imgs/3d1.png" alt="iPhone Frame" class="phone-png">
-                        
+                <div class="app-showcase-content">
+                    <div class="qr-discount-section">
+                        <img src="imgs/qr.png" alt="QR Code" class="qr-code-img">
+                        <p class="discount-text">Scan for 25% OFF!</p>
+                    </div>
+                    <div class="phone-display-container">
+                        <div class="iphone-frame">
+                            <img src="imgs/3d1.png" alt="iPhone Frame" class="phone-png">
+                            
+                        </div>
+                    </div>
+                    <div class="app-benefits-section">
+                        <h3>Why Download Our App?</h3>
+                        <p>Unlock a world of exclusive fashion and seamless shopping! Our app offers personalized recommendations, early access to new collections, and special in-app discounts. Enjoy a faster, more convenient way to shop your favorite styles, track your orders, and manage your wishlist all in one place. Your ultimate style companion is just a tap away!</p>
                     </div>
                 </div>
             </div>
+            <div class="spray-sign spray-1">X</div>
+            <div class="spray-sign spray-2">VIBE</div>
+            <div class="spray-sign spray-3">RAW</div>
+            <div class="spray-sign spray-4">ART</div>
+            <div class="spray-sign spray-5">FRESH</div>
         </section>
 
 
