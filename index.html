@@ -443,7 +443,19 @@
             border-radius: 8px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.08);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+            /* Initial state for fade-in from bottom */
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
+
+        /* Animation for product items */
+        .product-item.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
 
         .product-item:hover {
             transform: translateY(-7px);
@@ -485,8 +497,15 @@
             background-repeat: repeat;
             background-size: auto;
             background-position: center center;
+            opacity: 0; /* Initial state for fade-in */
+            transform: translateX(-50px); /* Start 50px to the left for left-to-right fade-in */
+            transition: opacity 1.2s ease-out, transform 1.2s ease-out; /* Slower transition */
         }
 
+        #product-showcase.is-visible {
+            opacity: 1;
+            transform: translateX(0); /* End at original position */
+        }
 
         #product-showcase h2 {
             margin-bottom: 50px;
@@ -765,6 +784,22 @@
             object-fit: contain;
         }
 
+        /* Typing Effect Cursor */
+        .typing-effect {
+            /* Removed: overflow: hidden; */
+            /* Removed: white-space: nowrap; */
+            /* Removed: margin: 0 auto; */
+            /* Removed: letter-spacing: .15em; */
+            animation: blink-caret .75s step-end infinite; /* Only blink-caret remains */
+            border-right: .15em solid #00724a; /* Green "type line" */
+            width: fit-content; /* Ensure the element's width fits its content */
+        }
+
+        /* Blinking Cursor Animation */
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #00724a; } /* Green blink */
+        }
 
         /* Responsiveness */
         @media (max-width: 992px) {
@@ -1092,7 +1127,7 @@
                         <img src="imgs/modelll.png" alt="Model wearing streetwear outfit">
                     </div>
                     <div class="look-details">
-                        <h2>The Urban Edge Collection</h2>
+                        <h2 id="urbanEdgeTitle"></h2>
                         <p>Own the streets with our Urban Edge Collection, where comfort meets cutting-edge style. This featured look showcases our graphic T-shirt, designed for maximum chill and bold statements.</p>
                         <p>Paired with distressed denim and chunky sneakers, it's the ultimate expression of your unique vibe. Level up your everyday style with pieces that speak volumes without saying a word.</p>
                         <a href="#" class="button" id="viewFeaturedLookBtn" data-product-id="featured-look-teen">Shop This Look</a>
@@ -1108,7 +1143,7 @@
 
         <section id="product-showcase">
             <div class="container">
-                <h2 style="margin-top: 0%; margin-bottom:0%">Check our Mobile app!</h2>
+                <h2 style="margin-top: 0%; margin-bottom:0%">Check our Mobile App!</h2>
                 <div class="app-showcase-content">
                     <div class="qr-discount-section">
                         <img src="imgs/qr.png" alt="QR Code" class="qr-code-img">
@@ -1127,10 +1162,10 @@
                 </div>
             </div>
             <div class="spray-sign spray-1">X</div>
-            <div class="spray-sign spray-2">VIBE</div>
-            <div class="spray-sign spray-3">RAW</div>
-            <div class="spray-sign spray-4">ART</div>
-            <div class="spray-sign spray-5">FRESH</div>
+            <div class="spray-sign spray-2">FASHIONISTA</div>
+            <div class="spray-sign spray-3">#</div>
+            <div class="spray-sign spray-4">CATCHY</div>
+            <div class="spray-sign spray-5">ART</div>
         </section>
 
 
@@ -1145,7 +1180,7 @@
                         <a href="#" class="button-small view-details-btn" data-product-id="distressed-jeans">View Details</a>
                     </div>
                     <div class="product-item">
-                        <img src="imgs/mm.png" alt="Distressed Straight-Leg Jeans">
+                        <img src="imgs/mm.png" alt="Polo T-shirt">
                         <h3>Polo T-shirt</h3>
                         <p>Your go-to denim for that effortlessly cool, lived-in look. Perfect with any pants.</p>
                         <a href="#" class="button-small view-details-btn" data-product-id="cropped-hoodie">View Details</a>
@@ -1164,9 +1199,9 @@
     <footer>
         <div class="container">
             <div class="footer-logo">
-                <a href="index.html">Vibe Threads</a>
+                <a href="index.html">FASHIONISTA</a>
             </div>
-            <p class="footer-rights">&copy; 2025 Vibe Threads. All rights reserved.</p>
+            <p class="footer-rights">&copy; 2025 Fashionista. All rights reserved.</p>
             <div class="social-icons">
                 <a href="https://tiktok.com/vibethreads" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
                 <a href="https://instagram.com/vibethreads" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
@@ -1229,8 +1264,10 @@
                 }
             });
 
-            // Intersection Observer for product fade-in animation
-            const bestSellerItems = document.querySelectorAll('#featured-products .product-item');
+            // Intersection Observer for fade-in animations
+            const productItems = document.querySelectorAll('#featured-products .product-item'); // Changed to productItems
+            const featuredLookImage = document.querySelector('#featured-look .look-image');
+            const productShowcase = document.getElementById('product-showcase');
 
             const observerOptions = {
                 root: null,
@@ -1238,18 +1275,35 @@
                 threshold: 0.1
             };
 
-            const productObserver = new IntersectionObserver((entries, observer) => {
+            const contentObserver = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        entry.target.classList.add('is-visible');
+                        // Check if it's a product item
+                        if (entry.target.classList.contains('product-item')) {
+                            const index = Array.from(productItems).indexOf(entry.target);
+                            setTimeout(() => {
+                                entry.target.classList.add('is-visible');
+                            }, index * 150); // Delay each product item
+                        } else {
+                            entry.target.classList.add('is-visible');
+                        }
                         observer.unobserve(entry.target);
                     }
                 });
             }, observerOptions);
 
-            bestSellerItems.forEach(item => {
-                productObserver.observe(item);
+            // Observe all relevant elements
+            productItems.forEach(item => { // Observe all product items
+                contentObserver.observe(item);
             });
+
+            if (featuredLookImage) {
+                contentObserver.observe(featuredLookImage);
+            }
+
+            if (productShowcase) {
+                contentObserver.observe(productShowcase);
+            }
 
 
             // Product Data for Modals
@@ -1267,43 +1321,9 @@
                         </ul>
                         <p>Mix, match, and make it yours. Vibe Threads is here to help you express every side of you.</p>
                     `,
-                    imageUrl: 'https://placehold.co/600x400/964734/AFDDE5?text=Streetwear+Look'
+                    imageUrl: 'imgs/modelll.png'
                 },
                 'distressed-jeans': {
-                    title: 'Distressed Straight-Leg Jeans: Your Go-To Cool',
-                    fullDescription: `
-                        <p>These aren't just jeans; they're a statement. Our Distressed Straight-Leg Jeans give you that perfectly worn-in, effortlessly cool look from day one. Designed with strategic distressing and a comfortable straight fit, they're ready for anything your day throws at you.</p>
-                        <p>Pair them with your favorite graphic tee or a cozy hoodie for an unbeatable casual vibe. Made with durable denim that's moves with you.</p>
-                        <p><strong>Features:</strong></p>
-                        <ul>
-                            <li>Authentic distressed detailing.</li>
-                            <li>Comfortable straight-leg fit.</li>
-                            <li>High-quality denim for durability.</li>
-                            <li>Versatile for everyday wear.</li>
-                            <li>Available in multiple washes.</li>
-                        </ul>
-                        <p><strong>Care:</strong> Machine wash cold inside out. Tumble dry low.</p>
-                    `,
-                    imageUrl: 'https://placehold.co/600x400/AFDDE5/003135?text=Distressed+Jeans'
-                },
-                'cropped-hoodie': {
-                    title: 'Oversized Cropped Hoodie: Cozy & Chic',
-                    fullDescription: `
-                        <p>Get ready to live in our Oversized Cropped Hoodie. It's the perfect blend of cozy comfort and on-trend style, designed with a relaxed, roomy fit and a modern cropped length. Made from super soft fleece, it's ideal for lounging, heading out, or layering up.</p>
-                        <p>Available in a range of vibrant colors to match your mood. Pair it with high-waisted jeans or joggers for an instant cool factor.</p>
-                        <p><strong>Features:</strong></p>
-                        <ul>
-                            <li>Ultra-soft fleece fabric.</li>
-                            <li>Oversized fit for maximum comfort.</li>
-                            <li>Trendy cropped length.</li>
-                            <li>Ribbed cuffs and hem.</li>
-                            <li>Drawstring hood.</li>
-                        </ul>
-                        <p><strong>Care:</strong> Machine wash cold. Tumble dry low.</p>
-                    `,
-                    imageUrl: 'https://placehold.co/600x400/AFDDE5/003135?text=Cropped+Hoodie'
-                },
-                'skater-dress': {
                     title: 'Plaid Skater Dress: Edgy & Playful',
                     fullDescription: `
                         <p>Unleash your inner rebel with our Plaid Skater Dress. This iconic dress combines a classic plaid pattern with a fun, flirty skater silhouette, giving you an edgy yet playful look that's perfect for concerts, parties, or just hanging out.</p>
@@ -1318,8 +1338,43 @@
                         </ul>
                         <p><strong>Care:</strong> Machine wash cold. Hang to dry.</p>
                     `,
-                    imageUrl: 'https://placehold.co/600x400/AFDDE5/003135?text=Skater+Dress'
-                }
+                    imageUrl: 'imgs/skirt.png'},
+                'cropped-hoodie': {
+                     title: ' Classic Comfort Polo: Your Everyday Essential',
+                    fullDescription: `
+                                                                                    <p>Elevate your everyday style with our Classic Comfort Polo. Crafted from premium, breathable pique fabric, this polo offers a timeless silhouette with modern comfort. Its soft texture and refined fit make it perfect for both casual outings and smart-casual occasions.</p>
+                        <p>Featuring a durable ribbed collar, a classic two-button placket, and subtle side vents for ease of movement, this polo is designed for lasting wear and effortless versatility. Available in a wide range of colors to seamlessly integrate into your wardrobe.</p>
+                        <p><strong>Features:</strong></p>
+                        <ul>
+                            <li>Ultra-soft fleece fabric.</li>
+                            <li>Oversized fit for maximum comfort.</li>
+                            <li>Trendy cropped length.</li>
+                            <li>Ribbed cuffs and hem.</li>
+                            <li>Drawstring hood.</li>
+                        </ul>
+                        <p><strong>Care:</strong> Machine wash cold. Tumble dry low.</p>
+                    `,
+                    imageUrl: 'imgs/mm.png'
+                },
+                    
+                'skater-dress': {
+                    title: 'Oversized Cropped Hoodie: Cozy & Chic',
+                    fullDescription: `
+                                                                                    <p>Get ready to live in our Oversized Cropped Hoodie. It's the perfect blend of cozy comfort and on-trend style, designed with a relaxed, roomy fit and a modern cropped length. Made from super soft fleece, it's ideal for lounging, heading out, or layering up.</p>
+                        <p>Available in a range of vibrant colors to match your mood. Pair it with high-waisted jeans or joggers for an instant cool factor.</p>
+                        <p><strong>Features:</strong></p>
+                        <ul>
+                            <li>Ultra-soft fleece fabric.</li>
+                            <li>Oversized fit for maximum comfort.</li>
+                            <li>Trendy cropped length.</li>
+                            <li>Ribbed cuffs and hem.</li>
+                            <li>Drawstring hood.</li>
+                        </ul>
+                        <p><strong>Care:</strong> Machine wash cold. Tumble dry low.</p>
+                    `,
+                    imageUrl: 'imgs/m3.png'
+                },
+                   
             };
 
             const viewDetailsButtons = document.querySelectorAll('.view-details-btn');
@@ -1383,6 +1438,33 @@
                     document.body.style.overflow = '';
                 }
             });
+
+            // Text Typing Animation
+            function typeWriter(elementId, text, delay = 100) {
+                let i = 0;
+                const targetElement = document.getElementById(elementId);
+                if (!targetElement) return;
+
+                // Clear existing content and add the typing effect class
+                targetElement.innerHTML = '';
+                targetElement.classList.add('typing-effect');
+
+                function type() {
+                    if (i < text.length) {
+                        targetElement.innerHTML += text.charAt(i);
+                        i++;
+                        setTimeout(type, delay);
+                    } else {
+                        // Once typing is complete, remove the blinking cursor effect
+                        targetElement.style.borderRight = 'none'; // Remove the border
+                        targetElement.classList.remove('typing-effect'); // Remove the animation class
+                    }
+                }
+                type();
+            }
+
+            // Call the function for the desired element
+            typeWriter('urbanEdgeTitle', 'The Urban Edge Collection');
         });
     </script>
 </body>
