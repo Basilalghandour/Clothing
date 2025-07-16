@@ -335,11 +335,16 @@
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-            transition: transform 0.4s ease-out;
+            /* Initial state for fade-in from left */
+            opacity: 0;
+            transform: translateX(-50px); /* Start 50px to the left for left-to-right fade-in */
+            transition: opacity 1.2s ease-out, transform 1.2s ease-out; /* Slower transition */
         }
 
-        #featured-look .look-image:hover {
-            transform: scale(1.02);
+        /* Animation for look image */
+        #featured-look .look-image.is-visible {
+            opacity: 1;
+            transform: translateX(0); /* End at original position */
         }
 
         #featured-look .look-image img {
@@ -908,16 +913,18 @@
                 padding-top: 0;
             }
             header {
-                position: relative; /* Changed to relative for mobile to allow menu to drop down */
-                top: auto;
-                left: auto;
-                transform: none;
-                width: 100%;
-                border-radius: 0;
-                padding: 12px 0;
-                background-color: #00724a; /* Green */
-                backdrop-filter: none;
-                box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+                position: fixed; /* KEEP THIS AS FIXED */
+                top: 0; /* Ensure it's at the very top */
+                left: 50%; /* Center it again */
+                transform: translateX(-50%); /* Center it again */
+                width: 98%; /* Match desktop width or adjust as needed */
+                max-width: 1400px; /* Keep max-width for consistency */
+                border-radius: 25px; /* Keep rounded corners if desired */
+                padding: 8px 20px; /* Keep consistent padding */
+                background-color: rgba(0, 114, 74, 0.8); /* Semi-transparent #00724a */
+                backdrop-filter: blur(10px); /* Keep blur if desired */
+                box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Keep shadow */
+                z-index: 1000;
             }
             header .container {
                 padding: 0 20px;
@@ -1084,7 +1091,7 @@
                     <div class="dropdown-content">
                         <a href="#">Our Mobile App</a>
                         <a href="#">Shob by Trend</a>
-                        
+
                     </div>
                 </li>
                 <li class="dropdown">
@@ -1152,7 +1159,7 @@
                     <div class="phone-display-container">
                         <div class="iphone-frame">
                             <img src="imgs/3d1.png" alt="iPhone Frame" class="phone-png">
-                            
+
                         </div>
                     </div>
                     <div class="app-benefits-section">
@@ -1265,8 +1272,8 @@
             });
 
             // Intersection Observer for fade-in animations
-            const productItems = document.querySelectorAll('#featured-products .product-item'); // Changed to productItems
-            const featuredLookImage = document.querySelector('#featured-look .look-image');
+            const productItems = document.querySelectorAll('#featured-products .product-item');
+            const featuredLookImage = document.querySelector('#featured-look .look-image'); // Corrected variable name
             const productShowcase = document.getElementById('product-showcase');
 
             const observerOptions = {
@@ -1297,6 +1304,7 @@
                 contentObserver.observe(item);
             });
 
+            // Observe the featured look image
             if (featuredLookImage) {
                 contentObserver.observe(featuredLookImage);
             }
@@ -1356,7 +1364,7 @@
                     `,
                     imageUrl: 'imgs/mm.png'
                 },
-                    
+
                 'skater-dress': {
                     title: 'Oversized Cropped Hoodie: Cozy & Chic',
                     fullDescription: `
@@ -1374,7 +1382,7 @@
                     `,
                     imageUrl: 'imgs/m3.png'
                 },
-                   
+
             };
 
             const viewDetailsButtons = document.querySelectorAll('.view-details-btn');
