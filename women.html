@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FASHIONISTA - Information</title>
+    <title>FASHIONISTA - Women's Collection</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Bebas+Neue&family=Permanent+Marker&family=Passion+One:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZGqAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -38,7 +38,7 @@
 
         a {
             text-decoration: none;
-            color: #FFFFFF; /* Changed from #0FA4AF (aqua) to White */
+            color: #FFFFFF; /* Changed to White */
         }
 
         a:hover {
@@ -307,152 +307,57 @@
             border-radius: 2px;
         }
 
-        /* Information Section Specific Styles */
-        .info-section {
+        /* Product Grid for Women's Page */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .product-item {
             background-color: #000000; /* Black */
-            padding: 40px 0;
-            border-bottom: 1px solid rgba(0, 114, 74, 0.3); /* Green border */
-        }
-
-        .info-section:last-of-type {
-            border-bottom: none; /* No border on the last section */
-        }
-
-        .info-content {
+            border: 1px solid rgba(0, 114, 74, 0.3); /* Green border */
             padding: 20px;
-            background-color: #000000; /* Black */
             border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-            margin-top: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            opacity: 0; /* Initial state for fade-in from bottom */
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            text-align: center; /* ALIGN BUTTONS HORIZONTALLY */
         }
 
-        .info-content h3 {
-            text-align: left;
-            color: #00724a; /* Green */
-            font-size: 1.8em;
-            margin-bottom: 15px;
-        }
-
-        .info-content p, .info-content ul, .info-content ol {
-            font-size: 1em;
-            line-height: 1.8;
-            color: #00724a; /* Green */
-            margin-bottom: 15px;
-            text-align: left;
-        }
-
-        .info-content ul, .info-content ol {
-            padding-left: 25px;
-        }
-
-        .info-content li {
-            margin-bottom: 8px;
-        }
-
-        /* FAQ Specific Styles */
-        .faq-item {
-            margin-bottom: 25px;
-            border-bottom: 1px dashed rgba(0, 114, 74, 0.2);
-            padding-bottom: 15px;
-        }
-
-        .faq-item:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-        }
-
-        .faq-question {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 1.2em;
-            color: #FFFFFF; /* Changed from #0FA4AF (aqua) to White */
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 0;
-            transition: color 0.2s ease;
-        }
-
-        .faq-question:hover {
-            color: #CCCCCC; /* Lighter white for hover */
-        }
-
-        .faq-question .icon {
-            font-size: 0.8em;
-            transition: transform 0.3s ease;
-        }
-
-        .faq-question.active .icon {
-            transform: rotate(180deg);
-        }
-
-        .faq-answer {
-            font-size: 0.95em;
-            color: #00724a;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease-out, opacity 0.4s ease-out;
-            opacity: 0;
-            padding-left: 10px;
-        }
-
-        .faq-answer.active {
-            max-height: 200px; /* Adjust as needed based on content */
+        .product-item.is-visible {
             opacity: 1;
-            padding-top: 10px;
+            transform: translateY(0);
         }
 
-        /* Contact Us Form Styles */
-        .contact-form {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            max-width: 500px;
-            margin: 20px auto;
-            padding: 25px;
-            background-color: #000000; /* Black */
-            border: 1px solid rgba(0, 114, 74, 0.3);
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        .product-item:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.15);
         }
 
-        .contact-form label {
-            font-size: 1em;
-            color: #00724a;
-            margin-bottom: 5px;
-            text-align: left;
+        .product-item img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+            margin-bottom: 15px;
         }
 
-        .contact-form input[type="text"],
-        .contact-form input[type="email"],
-        .contact-form textarea {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid rgba(0, 114, 74, 0.5);
-            border-radius: 5px;
-            background-color: #000000; /* Black */
-            color: #00724a;
-            font-family: 'Lato', sans-serif;
-            font-size: 1em;
-            box-sizing: border-box; /* Include padding in width */
+        .product-item h3 {
+            font-family: 'Passion One', sans-serif;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            color: #00724a; /* Green for product titles */
+            text-align: center;
         }
 
-        .contact-form input[type="text"]:focus,
-        .contact-form input[type="email"]:focus,
-        .contact-form textarea:focus {
-            outline: none;
-            border-color: #0FA4AF; /* Vibrant Green on focus - kept for focus highlight */
-            box-shadow: 0 0 0 2px rgba(15, 164, 175, 0.3);
-        }
-
-        .contact-form textarea {
-            resize: vertical;
-            min-height: 100px;
-        }
-
-        .contact-form button.button {
-            align-self: center;
-            margin-top: 10px;
+        .product-item p {
+            font-size: 0.9em;
+            color: #00724a; /* Green for product item description */
+            margin-bottom: 15px;
+            text-align: center;
         }
 
         /* Footer Styles */
@@ -778,12 +683,12 @@
                     </div>
                 </li>
                 <li class="dropdown">
-                    <a href="women.html" class="dropbtn">Women' Section <span class="dropdown-icon">&#9660;</span></a>
+                    <a href="#" class="dropbtn active-nav-item">Women' Section <span class="dropdown-icon">&#9660;</span></a>
                     <div class="dropdown-content">
-                         <a href="women.html#cropped-hoddies">Cropped hoodies</a>
-                        <a href="women.html#unique-dresses">Unique Dresses</a>
-                        <a href="women.html#comfy-tops">Comfy tops</a>
-                        <a href="women.html#low-raised-jeans">Low raised jeans</a>
+                        <a href="#cropped-hoodies">Cropped hoodies</a>
+                        <a href="#unique-dresses">Unique Dresses</a>
+                        <a href="#comfy-tops">Comfy tops</a>
+                        <a href="#low-raised-jeans">Low Raised Jeans</a>
                     </div>
                 </li>
                                 <li class="dropdown">
@@ -797,7 +702,7 @@
                 </li>
 
                 <li class="dropdown">
-                    <a href="#" class="dropbtn active-nav-item">Information <span class="dropdown-icon">&#9660;</span></a>
+                    <a href="information.html" class="dropbtn">Information <span class="dropdown-icon">&#9660;</span></a>
                     <div class="dropdown-content">
                         <a href="information.html#size-guide">Size Guide</a>
                         <a href="information.html#shipping-returns">Shipping & Returns</a>
@@ -811,157 +716,113 @@
     </header>
 
     <main>
-        <section id="info-hero" class="section-padding">
+        <section id="womens-hero" class="section-padding">
             <div class="container">
-                <h1>Important Information</h1>
-                <p style="text-align: center; font-size: 1.1em; color: #00724a;">Find all the details you need regarding our products, policies, and how to get in touch.</p>
+                <h1>Women's Collection: Express Your True Style</h1>
+                <p style="text-align: center; font-size: 1.1em; color: #00724a;">Discover our diverse collection designed to empower and inspire. Find pieces that reflect your individuality and elevate your wardrobe.</p>
             </div>
         </section>
 
-        <section id="size-guide" class="info-section section-padding">
+        <section id="cropped-hoodies" class="section-padding">
             <div class="container">
-                <h2>Size Guide</h2>
-                <div class="info-content">
-                    <h3 style="color: #ffffff;">How to Measure</h3>
-                    <p>To ensure the best fit, please follow these guidelines:</p>
-                    <ul>
-                        <li><strong>Chest:</strong> Measure around the fullest part of your chest, keeping the tape measure horizontal.</li>
-                        <li><strong>Waist:</strong> Measure around the narrowest part of your waist (usually just above your belly button), keeping the tape horizontal.</li>
-                        <li><strong>Hips:</strong> Measure around the fullest part of your hips, keeping the tape horizontal.</li>
-                        <li><strong>Inseam:</strong> Measure from the top of your inner thigh down to the bottom of your ankle.</li>
-                    </ul>
-
-                    <h3 style="color: #ffffff;">Men's Apparel Size Chart (CM)</h3>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Size</th>
-                                <th>Chest</th>
-                                <th>Waist</th>
-                                <th>Inseam</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>S</td>
-                                <td>86-91</td>
-                                <td>71-76</td>
-                                <td>76</td>
-                            </tr>
-                            <tr>
-                                <td>M</td>
-                                <td>92-99</td>
-                                <td>77-84</td>
-                                <td>78</td>
-                            </tr>
-                            <tr>
-                                <td>L</td>
-                                <td>100-107</td>
-                                <td>85-92</td>
-                                <td>80</td>
-                            </tr>
-                            <tr>
-                                <td>XL</td>
-                                <td>108-115</td>
-                                <td>93-100</td>
-                                <td>82</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <p style="margin-top: 20px;"><em>Note: Sizes may vary slightly between styles. Please refer to individual product pages for specific fit recommendations.</em></p>
-                </div>
-            </div>
-        </section>
-
-        <section id="shipping-returns" class="info-section section-padding">
-            <div class="container">
-                <h2>Shipping & Returns</h2>
-                <div class="info-content">
-                    <h3 style="color: #ffffff;">Shipping Information</h3>
-                    <p>We offer worldwide shipping to bring Fashionista to your doorstep, no matter where you are.</p>
-                    <ul>
-                        <li><strong>Standard Shipping:</strong> 5-10 business days ($7.99, free on orders over $100)</li>
-                        <li><strong>Express Shipping:</strong> 2-4 business days ($19.99)</li>
-                    </ul>
-                    <p>Orders are processed within 1-2 business days. You will receive a tracking number via email once your order has shipped.</p>
-
-                    <h3 style="color: #ffffff;">Returns Policy</h3>
-                    <p>Your satisfaction is our priority. If you're not completely happy with your purchase, you can return it within 30 days of receipt for a full refund or exchange.</p>
-                    <p><strong>Conditions for Returns:</strong></p>
-                    <ul>
-                        <li>Items must be unworn, unwashed, and in their original condition with all tags attached.</li>
-                        <li>Proof of purchase is required.</li>
-                        <li>Sale items are final sale and cannot be returned or exchanged.</li>
-                    </ul>
-                    <p>To initiate a return, please contact our customer service team at <a href="mailto:support@fashionista.com">support@fashionista.com</a>.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="faq" class="info-section section-padding">
-            <div class="container">
-                <h2>Frequently Asked Questions</h2>
-                <div class="info-content">
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            What payment methods do you accept? <span class="icon">&#9660;</span>
-                        </div>
-                        <div class="faq-answer">
-                            We accept major credit cards (Visa, MasterCard, American Express), PayPal, and Apple Pay.
-                        </div>
+                <h2>Cropped Hoodies</h2>
+                <div class="product-grid">
+                    <div class="product-item">
+                        <img src="imgs/bhh.png" alt="Black Cropped Hoodie">
+                        <h3>Essential Black Cropped Hoodie</h3>
+                        <p>A versatile staple for a chic, relaxed look. Perfect for layering or active wear.</p>
+                        <a href="#" class="button-small view-details-btn" data-product-id="women-hoodie-black">View Details</a>
                     </div>
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            How can I track my order? <span class="icon">&#9660;</span>
-                        </div>
-                        <div class="faq-answer">
-                            Once your order ships, you will receive an email with a tracking number and a link to track your package. You can also log into your account on our website to view your order status.
-                        </div>
+                    <div class="product-item">
+                        <img src="imgs/ghh.png" alt="Forest Green Cropped Hoodie">
+                        <h3>Forest Green Cropped Hoodie</h3>
+                        <p>Rich forest green for an earthy, stylish touch. Soft and cozy fleece interior.</p>
+                        <a href="#" class="button-small view-details-btn" data-product-id="women-hoodie-green">View Details</a>
                     </div>
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            Do you offer international shipping? <span class="icon">&#9660;</span>
-                        </div>
-                        <div class="faq-answer">
-                            Yes, we offer worldwide shipping. Shipping costs and delivery times vary depending on your location. Please see our Shipping Information section for more details.
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            Can I change or cancel my order after it's placed? <span class="icon">&#9660;</span>
-                        </div>
-                        <div class="faq-answer">
-                            We process orders quickly, so changes or cancellations may not always be possible. Please contact us immediately at <a href="mailto:support@fashionista.com">support@fashionista.com</a> if you need to modify your order.
-                        </div>
+                    <div class="product-item">
+                        <img src="imgs/whh.png" alt="Cloud White Cropped Hoodie">
+                        <h3>Cloud White Cropped Hoodie</h3>
+                        <p>Light and airy, perfect for a fresh and clean aesthetic. Breathable fabric.</p>
+                        <a href="#" class="button-small view-details-btn" data-product-id="women-hoodie-white">View Details</a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="contact-us" class="info-section section-padding">
+        <section id="unique-dresses" class="section-padding">
             <div class="container">
-                <h2>Contact Us</h2>
-                <div class="info-content">
-                    <p style="text-align: center;">Have questions or need assistance? We're here to help!</p>
-                    <div class="contact-form">
-                        <label for="name">Name:</label>
-                        <input type="text" id="name" name="name" required>
-
-                        <label for="email">Email:</label>
-                        <input type="email" id="email" name="email" required>
-
-                        <label for="subject">Subject:</label>
-                        <input type="text" id="subject" name="subject">
-
-                        <label for="message">Message:</label>
-                        <textarea id="message" name="message" required></textarea>
-
-                        <button type="submit" class="button">Send Message</button>
+                <h2>Unique Dresses</h2>
+                <div class="product-grid">
+                    <div class="product-item">
+                        <img src="imgs/d1.png" alt="Abstract Print Midi Dress">
+                        <h3>Abstract Print Midi Dress</h3>
+                        <p>Stand out with this artistic midi dress featuring a unique abstract pattern.</p>
+                        <a href="#" class="button-small view-details-btn" data-product-id="women-dress-abstract">View Details</a>
                     </div>
-                    <p style="text-align: center; margin-top: 20px;">You can also reach us directly:</p>
-                    <p style="text-align: center;">Email: <a href="mailto:info@fashionista.com">info@fashionista.com</a></p>
-                    <p style="text-align: center;">Phone: +1 (555) 123-4567</p>
-                    <p style="text-align: center;">Our customer service team is available Monday - Friday, 9 AM - 5 PM EST.</p>
+                    <div class="product-item">
+                        <img src="imgs/d22.png" alt="Boho Chic Maxi Dress">
+                        <h3>Boho Chic Maxi Dress</h3>
+                        <p>Flowy and comfortable, perfect for a relaxed yet elegant bohemian vibe.</p>
+                        <a href="#" class="button-small view-details-btn" data-product-id="women-dress-boho">View Details</a>
+                    </div>
+                    <div class="product-item">
+                        <img src="imgs/d3.png" alt="Asymmetrical Knit Dress">
+                        <h3>Asymmetrical Knit Dress</h3>
+                        <p>Modern and edgy, this knit dress offers a unique silhouette and comfortable fit.</p>
+                        <a href="#" class="button-small view-details-btn" data-product-id="women-dress-asymmetrical">View Details</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="comfy-tops" class="section-padding">
+            <div class="container">
+                <h2>Comfy Tops</h2>
+                <div class="product-grid">
+                    <div class="product-item">
+                        <img src="imgs/tt1.png" alt="Ribbed Knit Long Sleeve Top">
+                        <h3>Ribbed Knit Long Sleeve Top</h3>
+                        <p>Soft and stretchy, perfect for everyday comfort and effortless style.</p>
+                        <a href="#" class="button-small view-details-btn" data-product-id="women-top-ribbed">View Details</a>
+                    </div>
+                    <div class="product-item">
+                        <img src="imgs/tt2.png" alt="Oversized Graphic Tee">
+                        <h3>Oversized Graphic Tee</h3>
+                        <p>Make a statement with this loose-fit tee featuring a unique graphic print.</p>
+                        <a href="#" class="button-small view-details-btn" data-product-id="women-top-graphic">View Details</a>
+                    </div>
+                    <div class="product-item">
+                        <img src="imgs/tt3.png" alt="Soft Modal Tank Top">
+                        <h3>Soft Modal Tank Top</h3>
+                        <p>Luxuriously soft and breathable, ideal for lounging or layering.</p>
+                        <a href="#" class="button-small view-details-btn" data-product-id="women-top-modal">View Details</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="low-raised-jeans" class="section-padding">
+            <div class="container">
+                <h2>Low Raised Jeans</h2>
+                <div class="product-grid">
+                    <div class="product-item">
+                        <img src="imgs/jj1.png" alt="Dark Wash Low Rise Jeans">
+                        <h3>Dark Wash Low Rise Jeans</h3>
+                        <p>Classic dark wash with a modern low-rise fit for a sleek silhouette.</p>
+                        <a href="#" class="button-small view-details-btn" data-product-id="women-jeans-dark">View Details</a>
+                    </div>
+                    <div class="product-item">
+                        <img src="imgs/jj2.png" alt="Light Wash Distressed Low Rise Jeans">
+                        <h3>Light Wash Distressed Low Rise Jeans</h3>
+                        <p>Effortlessly cool with distressed details and a comfortable low-rise cut.</p>
+                        <a href="#" class="button-small view-details-btn" data-product-id="women-jeans-light">View Details</a>
+                    </div>
+                    <div class="product-item">
+                        <img src="imgs/jj3.png" alt="Black Low Rise Skinny Jeans">
+                        <h3>Black Low Rise Skinny Jeans</h3>
+                        <p>A timeless black skinny jean with a flattering low-rise fit for everyday wear.</p>
+                        <a href="#" class="button-small view-details-btn" data-product-id="women-jeans-black">View Details</a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -1035,33 +896,205 @@
                 }
             });
 
-            // FAQ Accordion Logic
-            const faqQuestions = document.querySelectorAll('.faq-question');
-            faqQuestions.forEach(question => {
-                question.addEventListener('click', function() {
-                    const answer = this.nextElementSibling;
-                    const icon = this.querySelector('.icon');
+            // Intersection Observer for fade-in animations on product items
+            const productItems = document.querySelectorAll('.product-item');
 
-                    // Close other open answers
-                    faqQuestions.forEach(otherQuestion => {
-                        if (otherQuestion !== this && otherQuestion.classList.contains('active')) {
-                            otherQuestion.classList.remove('active');
-                            otherQuestion.nextElementSibling.classList.remove('active');
-                            otherQuestion.querySelector('.icon').innerHTML = '&#9660;'; // Down arrow
-                        }
-                    });
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
 
-                    // Toggle current answer
-                    this.classList.toggle('active');
-                    answer.classList.toggle('active');
-                    if (this.classList.contains('active')) {
-                        icon.innerHTML = '&#9650;'; // Up arrow
-                    } else {
-                        icon.innerHTML = '&#9660;'; // Down arrow
+            const contentObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const index = Array.from(productItems).indexOf(entry.target);
+                        setTimeout(() => {
+                            entry.target.classList.add('is-visible');
+                        }, index * 20); // Adjusted delay to 20ms for faster fade-in
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all product items
+            productItems.forEach(item => {
+                contentObserver.observe(item);
+            });
+
+            // Product Data for Modals (Women's specific products)
+            const productData = {
+                'women-hoodie-black': {
+                    title: 'Essential Black Cropped Hoodie: Versatile Comfort',
+                    fullDescription: `
+                        <p>The Essential Black Cropped Hoodie is a must-have for any wardrobe, offering a perfect blend of comfort and contemporary style. Its soft fleece fabric ensures warmth, while the cropped length adds a trendy touch.</p>
+                        <p>Ideal for pairing with high-waisted jeans, leggings, or skirts. Features a cozy hood and ribbed cuffs and hem for a snug fit.</p>
+                        <p><strong>Material:</strong> 80% Cotton, 20% Polyester Fleece</p>
+                        <p><strong>Care:</strong> Machine wash cold inside out, tumble dry low.</p>
+                    `,
+                    imageUrl: 'imgs/bhh.png'
+                },
+                'women-hoodie-green': {
+                    title: 'Forest Green Cropped Hoodie: Earthy & Stylish',
+                    fullDescription: `
+                        <p>Embrace nature-inspired style with our Forest Green Cropped Hoodie. This rich, deep green hoodie is crafted from a super-soft fleece, providing ultimate comfort and a relaxed fit.</p>
+                        <p>Its cropped silhouette makes it perfect for layering over tanks or pairing with your favorite high-waisted bottoms. A stylish choice for casual outings or cozy nights in.</p>
+                        <p><strong>Material:</strong> 70% Cotton, 30% Recycled Polyester</p>
+                        <p><strong>Care:</strong> Machine wash cold, do not bleach.</p>
+                    `,
+                    imageUrl: 'imgs/ghh.png'
+                },
+                'women-hoodie-white': {
+                    title: 'Cloud White Cropped Hoodie: Fresh & Clean',
+                    fullDescription: `
+                        <p>Achieve a fresh and clean aesthetic with our Cloud White Cropped Hoodie. Made from a lightweight and breathable fabric, this hoodie offers a comfortable and airy feel, perfect for warmer days or light layering.</p>
+                        <p>Its crisp white color makes it a versatile piece that brightens any outfit. Features a relaxed fit and a modern cropped cut.</p>
+                        <p><strong>Material:</strong> 100% Organic Cotton Fleece</p>
+                        <p><strong>Care:</strong> Hand wash cold or dry clean recommended.</p>
+                    `,
+                    imageUrl: 'imgs/whh.png'
+                },
+                'women-dress-abstract': {
+                    title: 'Abstract Print Midi Dress: Artistic Expression',
+                    fullDescription: `
+                        <p>Make a bold artistic statement with our Abstract Print Midi Dress. This unique dress features a captivating abstract pattern that ensures you stand out from the crowd. Crafted from a soft, flowing fabric, it offers both comfort and elegance.</p>
+                        <p>The midi length makes it suitable for various occasions, from art gallery visits to casual brunches. Pair with simple heels or sandals to let the print shine.</p>
+                        <p><strong>Material:</strong> 95% Polyester, 5% Spandex</p>
+                        <p><strong>Care:</strong> Machine wash cold, hang dry.</p>
+                    `,
+                    imageUrl: 'imgs/d1.png'
+                },
+                'women-dress-boho': {
+                    title: 'Boho Chic Maxi Dress: Effortless Elegance',
+                    fullDescription: `
+                        <p>Embrace effortless elegance with our Boho Chic Maxi Dress. This flowing maxi dress features delicate details and a relaxed silhouette, perfect for capturing a free-spirited bohemian vibe.</p>
+                        <p>Made from a lightweight and breathable fabric, it's ideal for warm weather, beach days, or summer festivals. Pair with sandals and layered jewelry for a complete look.</p>
+                        <p><strong>Material:</strong> 100% Rayon</p>
+                        <p><strong>Care:</strong> Hand wash cold, line dry.</p>
+                    `,
+                    imageUrl: 'imgs/d22.png'
+                },
+                'women-dress-asymmetrical': {
+                    title: 'Asymmetrical Knit Dress: Modern Edge',
+                    fullDescription: `
+                        <p>Infuse modern edge into your wardrobe with our Asymmetrical Knit Dress. This stylish dress features a unique asymmetrical hemline and a comfortable knit fabric, perfect for a contemporary and sophisticated look.</p>
+                        <p>Its flattering fit and soft texture make it suitable for both day and evening wear. Dress it up with heels or keep it casual with ankle boots.</p>
+                        <p><strong>Material:</strong> 70% Viscose, 30% Nylon Knit</p>
+                        <p><strong>Care:</strong> Dry clean recommended.</p>
+                    `,
+                    imageUrl: 'imgs/d3.png'
+                },
+                'women-top-ribbed': {
+                    title: 'Ribbed Knit Long Sleeve Top: Everyday Comfort',
+                    fullDescription: `
+                        <p>Experience everyday comfort with our Ribbed Knit Long Sleeve Top. This soft and stretchy top is perfect for layering or wearing on its own. Its ribbed texture adds a subtle detail, while the comfortable fit makes it ideal for any casual occasion.</p>
+                        <p>A versatile piece that can be dressed up or down. Perfect for transitional weather.</p>
+                        <p><strong>Material:</strong> 95% Cotton, 5% Spandex Rib</p>
+                        <p><strong>Care:</strong> Machine wash cold, lay flat to dry.</p>
+                    `,
+                    imageUrl: 'imgs/tt1.png'
+                },
+                'women-top-graphic': {
+                    title: 'Oversized Graphic Tee: Statement Style',
+                    fullDescription: `
+                        <p>Make a bold statement with our Oversized Graphic Tee. This loose-fit tee features a unique graphic print that expresses your individuality. Made from soft, breathable cotton, it offers ultimate comfort for all-day wear.</p>
+                        <p>Perfect for a casual, street-style look. Pair it with jeans, shorts, or a skirt for an effortlessly cool outfit.</p>
+                        <p><strong>Material:</strong> 100% Cotton Jersey</p>
+                        <p><strong>Care:</strong> Machine wash cold, gentle cycle, hang dry.</p>
+                    `,
+                    imageUrl: 'imgs/tt2.png'
+                },
+                'women-top-modal': {
+                    title: 'Soft Modal Tank Top: Luxuriously Smooth',
+                    fullDescription: `
+                        <p>Indulge in luxurious comfort with our Soft Modal Tank Top. Crafted from incredibly smooth and breathable modal fabric, this tank feels like a second skin. Its lightweight design makes it perfect for lounging, sleeping, or as a comfortable base layer.</p>
+                        <p>A simple yet essential piece for your everyday comfort.</p>
+                        <p><strong>Material:</strong> 90% Modal, 10% Spandex</p>
+                        <p><strong>Care:</strong> Machine wash cold, delicate cycle.</p>
+                    `,
+                    imageUrl: 'imgs/tt3.png'
+                },
+                'women-jeans-dark': {
+                    title: 'Dark Wash Low Rise Jeans: Sleek & Modern',
+                    fullDescription: `
+                        <p>Achieve a sleek and modern silhouette with our Dark Wash Low Rise Jeans. These jeans offer a classic dark indigo wash with a flattering low-rise fit that sits comfortably on your hips.</p>
+                        <p>Made from stretch denim for ultimate comfort and flexibility, they are perfect for both casual and dressed-up looks. A versatile addition to your denim collection.</p>
+                        <p><strong>Material:</strong> 98% Cotton, 2% Spandex Denim</p>
+                        <p><strong>Care:</strong> Machine wash cold inside out, tumble dry low.</p>
+                    `,
+                    imageUrl: 'imgs/jj1.png'
+                },
+                'women-jeans-light': {
+                    title: 'Light Wash Distressed Low Rise Jeans: Effortlessly Cool',
+                    fullDescription: `
+                        <p>Embrace an effortlessly cool vibe with our Light Wash Distressed Low Rise Jeans. These jeans feature a trendy light wash with strategically placed distressed details for an authentic, lived-in look.</p>
+                        <p>The low-rise cut provides a comfortable and stylish fit, perfect for showcasing your favorite tops. Ideal for casual outings and adding an edgy touch to your ensemble.</p>
+                        <p><strong>Material:</strong> 100% Cotton Denim</p>
+                        <p><strong>Care:</strong> Machine wash cold, delicate cycle, hang dry.</p>
+                    `,
+                    imageUrl: 'imgs/jj2.png'
+                },
+                'women-jeans-black': {
+                    title: 'Black Low Rise Skinny Jeans: Timeless Essential',
+                    fullDescription: `
+                        <p>A timeless essential for any wardrobe, our Black Low Rise Skinny Jeans offer a sleek and flattering fit. The classic black color makes them incredibly versatile, perfect for pairing with anything from casual tees to dressy blouses.</p>
+                        <p>Crafted from comfortable stretch denim, these jeans provide a snug yet flexible fit that moves with you throughout the day.</p>
+                        <p><strong>Material:</strong> 97% Cotton, 3% Spandex Denim</p>
+                        <p><strong>Care:</strong> Machine wash cold inside out, hang dry.</p>
+                    `,
+                    imageUrl: 'imgs/jj3.png'
+                }
+            };
+
+            const viewDetailsButtons = document.querySelectorAll('.view-details-btn');
+            const productDetailModal = document.getElementById('productDetailModal');
+            const closeProductModalBtn = document.getElementById('closeProductModalBtn');
+            const productModalTitle = document.getElementById('productModalTitle');
+            const productModalBody = document.getElementById('productModalBody');
+
+            // Function to open the modal with content
+            function openProductModal(product) {
+                productModalTitle.innerHTML = product.title;
+                // Clear previous content
+                productModalBody.innerHTML = '';
+
+                // Add image if available
+                if (product.imageUrl) {
+                    const img = document.createElement('img');
+                    img.src = product.imageUrl;
+                    img.alt = product.title;
+                    productModalBody.appendChild(img);
+                }
+                // Add description
+                productModalBody.innerHTML += product.fullDescription;
+
+                productDetailModal.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            }
+
+            viewDetailsButtons.forEach(button => {
+                button.addEventListener('click', function(event) {
+                    event.preventDefault(); // Prevent default link behavior
+                    const productId = this.dataset.productId;
+                    const product = productData[productId];
+                    if (product) {
+                        openProductModal(product);
                     }
                 });
             });
 
+            closeProductModalBtn.addEventListener('click', function() {
+                productDetailModal.classList.remove('active');
+                document.body.style.overflow = ''; // Restore background scrolling
+            });
+
+            // Close modal when clicking outside the content
+            productDetailModal.addEventListener('click', function(event) {
+                if (event.target === productDetailModal) {
+                    productDetailModal.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
 
             // Smooth scrolling to section on page load if hash exists
             function scrollToHash() {
