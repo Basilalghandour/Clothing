@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FASHIONISTA</title>
+    <title>FASHIONISTA - Men's Collection</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Bebas+Neue&family=Permanent+Marker&family=Passion+One:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZGqAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -15,7 +15,7 @@
             line-height: 1.6;
             color: #00724a; /* All text in green */
             background-color: #000000; /* Background color in black */
-            padding-top: 80px;
+            padding-top: 80px; /* Space for fixed header */
         }
 
         .container {
@@ -122,7 +122,6 @@
             padding: 0;
             display: flex;
             align-items: center;
-            /* Removed: justify-content: center; */ /* Remove for proper margin-left: auto functionality */
             transition: all 0.3s ease-in-out;
             flex-grow: 1; /* Allow ul to take available space within nav for better centering */
         }
@@ -281,7 +280,7 @@
             color: #000000; /* Keep text black on hover */
         }
 
-        /* Section Padding (retained for consistency) */
+        /* Section Padding */
         .section-padding {
             padding: 60px 0;
         }
@@ -308,132 +307,7 @@
             border-radius: 2px;
         }
 
-        /* Featured Look Section */
-        #featured-look {
-            background-color: #000000; /* Black */
-            padding: 80px 0;
-            text-align: center;
-            border-bottom: 1px solid rgba(0, 114, 74, 0.3); /* Green border */
-            position: relative;
-            overflow: hidden;
-        }
-
-        #featured-look .look-container {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: center;
-            gap: 50px;
-            margin-top: 40px;
-            position: relative;
-            z-index: 10;
-        }
-
-        #featured-look .look-image {
-            width: 470px;
-            height: auto;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-            /* Initial state for fade-in from left */
-            opacity: 0;
-            transform: translateX(-50px); /* Start 50px to the left for left-to-right fade-in */
-            transition: opacity 1.2s ease-out, transform 1.2s ease-out; /* Slower transition */
-        }
-
-        /* Animation for look image */
-        #featured-look .look-image.is-visible {
-            opacity: 1;
-            transform: translateX(0); /* End at original position */
-        }
-
-        #featured-look .look-image img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        #featured-look .look-details {
-            flex: 1;
-            min-width: 300px;
-            max-width: 550px;
-            text-align: left;
-            padding: 20px;
-        }
-
-        #featured-look .look-details h2 {
-            font-family: 'Passion One', sans-serif;
-            text-align: left;
-            color: #00724a; /* Green */
-            font-size: 2.5em;
-            margin-bottom: 20px;
-        }
-
-        #featured-look .look-details p {
-            font-size: 1.1em;
-            line-height: 1.8;
-            color: #00724a; /* Green for text */
-            margin-bottom: 25px;
-        }
-
-        /* Spray Paint Signs for Featured Look Section */
-        .spray-sign {
-            font-family: 'Permanent Marker', cursive;
-            color: #00724a; /* Reverted to Green */
-            position: absolute;
-            user-select: none;
-            pointer-events: none;
-            white-space: nowrap;
-            text-shadow: 2px 2px 5px rgba(0,0,0,0.1);
-            opacity: 0.3; /* Adjusted to be less visible */
-            z-index: 5;
-        }
-
-        .spray-sign.spray-1 {
-            font-size: 8em;
-            top: 5%;
-            left: 5%;
-            transform: rotate(-20deg);
-        }
-
-        .spray-sign.spray-2 {
-            font-size: 5em;
-            bottom: 10%;
-            right: 8%;
-            transform: rotate(10deg);
-        }
-
-        .spray-sign.spray-3 {
-            font-size: 6em;
-            top: 40%;
-            left: 50%;
-            transform: translate(-50%, -50%) rotate(5deg);
-        }
-
-        .spray-sign.spray-4 {
-            font-size: 7em;
-            top: 15%;
-            right: 20%;
-            transform: rotate(25deg);
-            opacity: 0.25; /* Adjusted for consistency with new base opacity */
-        }
-
-        .spray-sign.spray-5 {
-            font-size: 4.5em;
-            bottom: 20%;
-            left: 15%;
-            transform: rotate(-15deg);
-            opacity: 0.35; /* Adjusted for consistency with new base opacity */
-        }
-
-
-        /* Featured Products */
-        #featured-products {
-            background-color: #000000; /* Black */
-            text-align: center;
-            border-bottom: 1px solid rgba(0, 114, 74, 0.3); /* Green border */
-        }
-
+        /* Product Grid for Men's Page */
         .product-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -448,19 +322,16 @@
             border-radius: 8px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.08);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-
-            /* Initial state for fade-in from bottom */
-            opacity: 0;
+            opacity: 0; /* Initial state for fade-in from bottom */
             transform: translateY(20px);
             transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            text-align: center; /* ALIGN BUTTONS HORIZONTALLY */
         }
 
-        /* Animation for product items */
         .product-item.is-visible {
             opacity: 1;
             transform: translateY(0);
         }
-
 
         .product-item:hover {
             transform: translateY(-7px);
@@ -488,171 +359,6 @@
             margin-bottom: 15px;
             text-align: center;
         }
-
-        /* Product Showcase Section */
-        #product-showcase {
-            position: relative;
-            overflow: hidden;
-            background-color: #000000; /* Black */
-            padding: 80px 0;
-            text-align: center;
-            border-top: 1px solid rgba(0, 114, 74, 0.3); /* Green border */
-            border-bottom: 1px solid rgba(0, 114, 74, 0.3); /* Green border */
-            background-image: none;
-            background-repeat: repeat;
-            background-size: auto;
-            background-position: center center;
-            opacity: 0; /* Initial state for fade-in */
-            transform: translateX(-50px); /* Start 50px to the left for left-to-right fade-in */
-            transition: opacity 1.2s ease-out, transform 1.2s ease-out; /* Slower transition */
-        }
-
-        #product-showcase.is-visible {
-            opacity: 1;
-            transform: translateX(0); /* End at original position */
-        }
-
-        #product-showcase h2 {
-            margin-bottom: 50px;
-            color: #00724a; /* Green */
-            position: relative;
-            z-index: 1;
-        }
-
-        /* NEW STYLES FOR PRODUCT SHOWCASE PHONES */
-        .app-showcase-content { /* New wrapper for QR, Phone, and Benefits */
-            display: flex;
-            justify-content: flex-end; /* Pushed the whole section to the right */
-            align-items: center;
-            gap: 50px; /* Space between sections */
-            margin-top: 40px;
-            flex-wrap: wrap; /* Allow wrapping on smaller screens */
-            padding-right: 50px; /* Add padding to push content further from the right edge */
-        }
-
-        .qr-discount-section {
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 15px;
-            max-width: 200px; /* Adjust as needed */
-        }
-
-        .qr-code-img {
-            width: 150px; /* Adjust size of QR code */
-            height: 150px;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-
-        .discount-text {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 1.5em;
-            color: #00724a; /* Green */
-            margin-top: 10px;
-            font-weight: 700;
-            letter-spacing: 1px;
-        }
-
-        .phone-display-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 20px; /* Space between phones */
-            perspective: 1000px; /* For 3D transformations */
-            flex-wrap: wrap; /* Allow wrapping on smaller screens */
-        }
-
-        .iphone-frame {
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            /* Adjust these values to match the overall dimensions of your iPhone PNG */
-            width: 300px; /* Example: increase from 250px */
-            height: 600px; /* Example: increase from 500px */
-
-
-            transition: transform 0.5s ease-out;
-        }
-
-        /* First phone tilted to the right */
-        .iphone-frame:first-child {
-        }
-
-        /* Second phone tilted to the left */
-        .iphone-frame:last-child {
-            transform: rotateY(-15deg) rotateX(5deg) translateX(-10px); /* Adjust tilt as needed */
-        }
-
-        .iphone-frame img.phone-png {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover; /* Ensures the PNG fits without distortion */
-            z-index: 10; /* Changed from 2 to 10 to be higher than spray signs */
-        }
-
-        .iphone-content {
-            position: absolute;
-            /* Adjust these percentages and positioning based on your specific iPhone PNG's screen area */
-            top: 50%; /* You might need to adjust this, e.g., to 48% or 52% */
-            left: 50%; /* You might need to adjust this, e.g., to 49% or 51% */
-            width: 80%; /* Example: If the screen takes up 80% of the frame's width */
-            height: 88%; /* Example: If the screen takes up 88% of the frame's height */
-            transform: translate(-50%, -50%);
-            overflow: hidden;
-            border-radius: 30px; /* Adjust to match the curvature of your PNG's screen */
-            background-color: #fff; /* Background for the product image */
-            z-index: 9; /* Changed from 1 to 9 to be higher than spray signs, but below the phone frame */
-        }
-
-        .iphone-content img.product-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover; /* Cover the content area */
-            display: block;
-            transform-origin: center center; /* Ensure rotation is from the center */
-            transition: transform 0.3s ease; /* Smooth transition for tilt */
-        }
-
-        /* Tilt the image in the LEFT phone (first-child) a bit to the RIGHT (3D tilt using rotateY) */
-        .iphone-frame:first-child .iphone-content img.product-image {
-        }
-
-        /* Tilt the image in the RIGHT phone (last-child) a bit to the LEFT (3D tilt using rotateY) */
-        .iphone-frame:last-child .iphone-content img.product-image {
-            transform: rotateY(5deg); /* Adjusted to rotate Y for 3D tilt */
-        }
-
-        .app-benefits-section {
-            text-align: left;
-            max-width: 500px; /* Increased from 250px to 500px for wider lines */
-            padding: 20px;
-            color: #00724a; /* Green text */
-            flex-grow: 1; /* Allow it to grow and fill space */
-            margin-left: auto; /* Push it to the right */
-        }
-
-        .app-benefits-section h3 {
-            font-family: 'Passion One', sans-serif;
-            font-size: 2em;
-            color: #00724a; /* Green */
-            margin-bottom: 15px;
-            text-align: left; /* Align title left within its section */
-        }
-
-        .app-benefits-section p {
-            font-size: 1.3em; /* Increased from 1.1em to 1.3em for larger text */
-            line-height: 1.7;
-            color: #00724a; /* Green for paragraph text */
-            text-align: left;
-        }
-        /* END NEW STYLES */
-
 
         /* Footer Styles */
         footer {
@@ -789,23 +495,6 @@
             object-fit: contain;
         }
 
-        /* Typing Effect Cursor */
-        .typing-effect {
-            /* Removed: overflow: hidden; */
-            /* Removed: white-space: nowrap; */
-            /* Removed: margin: 0 auto; */
-            /* Removed: letter-spacing: .15em; */
-            animation: blink-caret .75s step-end infinite; /* Only blink-caret remains */
-            border-right: .15em solid #00724a; /* Green "type line" */
-            width: fit-content; /* Ensure the element's width fits its content */
-        }
-
-        /* Blinking Cursor Animation */
-        @keyframes blink-caret {
-            from, to { border-color: transparent }
-            50% { border-color: #00724a; } /* Green blink */
-        }
-
         /* Responsiveness */
         @media (max-width: 992px) {
             header {
@@ -814,7 +503,7 @@
                 max-width: 900px;
             }
             nav {
-                margin-left: 0; /* Remove margin on smaller screens */
+                margin-left: 0;
             }
             nav ul li {
                 margin: 0 10px;
@@ -837,22 +526,6 @@
                 font-size: 1.3em;
             }
 
-            #featured-look {
-                padding: 60px 20px;
-            }
-            #featured-look .look-details h2 {
-                font-size: 2em;
-            }
-            #featured-look .look-details p {
-                font-size: 1em;
-            }
-
-            .spray-sign.spray-1 { font-size: 6em; }
-            .spray-sign.spray-2 { font-size: 4em; }
-            .spray-sign.spray-3 { font-size: 5em; }
-            .spray-sign.spray-4 { font-size: 5.5em; }
-            .spray-sign.spray-5 { font-size: 3.5em; }
-
             .section-padding h2 {
                 font-size: 2em;
             }
@@ -872,39 +545,6 @@
             .modal-body img {
                 max-width: 90%;
                 max-height: 250px;
-            }
-            /* Adjust phone display on smaller screens */
-            .app-showcase-content {
-                flex-direction: column; /* Stack QR, Phone, and Benefits vertically on smaller screens */
-                padding-right: 0; /* Remove right padding on mobile */
-                justify-content: center; /* Center content on mobile */
-            }
-
-            .qr-discount-section {
-                margin-bottom: 30px; /* Add space below QR on stacked layout */
-                max-width: 100%;
-            }
-            .app-benefits-section {
-                margin-top: 30px; /* Add space above benefits on stacked layout */
-                max-width: 100%;
-                margin-left: initial; /* Reset margin-left: auto for mobile */
-            }
-
-
-            .iphone-frame {
-                width: 200px;
-                height: 400px;
-            }
-            .iphone-frame:first-child {
-                transform: rotateY(10deg) rotateX(5deg) translateX(5px);
-            }
-            .iphone-frame:last-child {
-                transform: rotateY(-10deg) rotateX(5deg) translateX(-5px);
-            }
-            /* Remove image tilt on mobile for better visibility if needed */
-            .iphone-frame:first-child .iphone-content img.product-image,
-            .iphone-frame:last-child .iphone-content img.product-image {
-                transform: none;
             }
         }
 
@@ -1015,57 +655,6 @@
                 font-size: 2em;
             }
 
-            #featured-look {
-                padding: 80px 20px;
-            }
-            /* Spray signs remain visible on mobile, but scale down */
-            .spray-sign.spray-1 { font-size: 4.5em; }
-            .spray-sign.spray-2 { font-size: 3em; }
-            .spray-sign.spray-3 { font-size: 3.5em; }
-            .spray-sign.spray-4 { font-size: 4em; }
-            .spray-sign.spray-5 { font-size: 2.5em; }
-
-
-            #featured-look .look-container {
-                flex-direction: column;
-                gap: 30px;
-            }
-
-            #featured-look .look-image {
-                width: 100%;
-                max-width: 470px;
-            }
-
-            #featured-look .look-details {
-                text-align: center;
-                padding: 0;
-            }
-
-            #featured-look .look-details h2 {
-                text-align: center;
-                font-size: 2em;
-            }
-
-            .product-grid, .paragraph-grid {
-                grid-template-columns: 1fr;
-            }
-
-            /* New phone display adjustments for mobile */
-            .phone-display-container {
-                flex-direction: column; /* Stack phones vertically on mobile */
-                gap: 30px;
-            }
-            .iphone-frame {
-                transform: none !important; /* Remove phone tilt on mobile for better stacking */
-                width: 220px;
-                height: 440px;
-            }
-            /* Remove image tilt on mobile for better visibility if needed */
-            .iphone-frame:first-child .iphone-content img.product-image,
-            .iphone-frame:last-child .iphone-content img.product-image {
-                transform: none;
-            }
-
             footer .container {
                 gap: 15px;
             }
@@ -1087,25 +676,26 @@
         <nav id="main-nav">
             <ul>
                 <li class="dropdown">
-                    <a href="#" class="dropbtn">Discover <span class="dropdown-icon">&#9660;</span></a>
+                    <a href="index.html#product-showcase" class="dropbtn">Discover <span class="dropdown-icon">&#9660;</span></a>
                     <div class="dropdown-content">
-                        <a href="#product-showcase" id="mobileAppLink">Our Mobile App</a>
-                        <a href="#featured-products" id="shopByTrendLink">Shop by Trend</a>
+                        <a href="index.html#product-showcase">Our Mobile App</a>
+                        <a href="index.html#featured-products">Shop by Trend</a>
                     </div>
                 </li>
                 <li class="dropdown">
-                    <a href="men.html" class="dropbtn">Men's Section <span class="dropdown-icon">&#9660;</span></a>
+                    <a href="#" class="dropbtn active-nav-item">Men's Section <span class="dropdown-icon">&#9660;</span></a>
                     <div class="dropdown-content">
-                       <a href="men.html#tank-tops">Tank Tops</a>
-                        <a href="men.html#cargo-pants">sneakers</a>
-                         <a href="men.html#polo-tshirts">Polo t-shirts</a>
-                        <a href="men.html#oversized-hoodies">Oversized Hoodies</a>
+                        <a href="#tank-tops">Tank Tops</a>
+                        <a href="#sneakers">Sneakers</a>
+                        <a href="#polo-tshirts">Polo t-shirts</a>
+                        <a href="#oversized-hoodies">Oversized Hoodies</a>
+                       
                     </div>
                 </li>
                 <li class="dropdown">
                     <a href="#" class="dropbtn">Women' Section <span class="dropdown-icon">&#9660;</span></a>
                     <div class="dropdown-content">
-                         <a href="#">Cropped hoodies</a>
+                        <a href="#">Cropped hoodies</a>
                         <a href="#">Unique Dresses</a>
                         <a href="#">Comfy tops</a>
                              <a href="#">Low raised jeans</a>
@@ -1126,80 +716,120 @@
     </header>
 
     <main>
-        <section id="featured-look">
+         
             <div class="container">
-                <div class="look-container">
-                    <div class="look-image">
-                        <img src="imgs/modelll.png" alt="Model wearing streetwear outfit">
-                    </div>
-                    <div class="look-details">
-                        <h2 id="urbanEdgeTitle"></h2>
-                        <p>Own the streets with our Urban Edge Collection, where comfort meets cutting-edge style. This featured look showcases our graphic T-shirt, designed for maximum chill and bold statements.</p>
-                        <p>Paired with distressed denim and chunky sneakers, it's the ultimate expression of your unique vibe. Level up your everyday style with pieces that speak volumes without saying a word.</p>
-                        <a href="#" class="button" id="viewFeaturedLookBtn" data-product-id="featured-look-teen">Shop This Look</a>
-                    </div>
-                </div>
+                <h1>Men's Collection: Redefine Your Style</h1>
+                <p style="text-align: center; font-size: 1.1em; color: #00724a;">Explore our latest collection designed for the modern man. From casual essentials to statement pieces, find your perfect fit.</p>
             </div>
-            <div class="spray-sign spray-1">X</div>
-            <div class="spray-sign spray-2">VIBE</div>
-            <div class="spray-sign spray-3">RAW</div>
-            <div class="spray-sign spray-4">ART</div>
-            <div class="spray-sign spray-5">FRESH</div>
-        </section>
-
-        <section id="product-showcase">
+             <section id="tank-tops" class="section-padding">
             <div class="container">
-                <h2 style="margin-top: 0%; margin-bottom:0%">Check our Mobile App!</h2>
-                <div class="app-showcase-content">
-                    <div class="qr-discount-section">
-                        <img src="imgs/qr.png" alt="QR Code" class="qr-code-img">
-                        <p class="discount-text">Scan for 25% OFF!</p>
-                    </div>
-                    <div class="phone-display-container">
-                        <div class="iphone-frame">
-                            <img src="imgs/3d1.png" alt="iPhone Frame" class="phone-png">
-
-                        </div>
-                    </div>
-                    <div class="app-benefits-section">
-                        <h3>Why Download Our App?</h3>
-                        <p>Unlock a world of exclusive fashion and seamless shopping! Our app offers personalized recommendations, early access to new collections, and special in-app discounts. Enjoy a faster, more convenient way to shop your favorite styles, track your orders, and manage your wishlist all in one place. Your ultimate style companion is just a tap away!</p>
-                    </div>
-                </div>
-            </div>
-            <div class="spray-sign spray-1">X</div>
-            <div class="spray-sign spray-2">FASHIONISTA</div>
-            <div class="spray-sign spray-3">#</div>
-            <div class="spray-sign spray-4">CATCHY</div>
-            <div class="spray-sign spray-5">ART</div>
-        </section>
-
-
-        <section id="featured-products" class="section-padding">
-            <div class="container">
-                <h2>Trending Now</h2>
+                <h2>Tank Tops</h2>
                 <div class="product-grid">
                     <div class="product-item">
-                        <img src="imgs/skirt.png" alt="Plaid Skater Dress">
-                        <h3>Plaid Skater Dress</h3>
-                        <p>Cozy, stylish, and perfect for layering. Get that relaxed fit you love.</p>
-                        <a href="#" class="button-small view-details-btn" data-product-id="distressed-jeans">View Details</a>
+                        <img src="imgs/wt.png" alt="White Tank Top">
+                        <h3>Essential White Tank</h3>
+                        <p>Soft and breathable, perfect for workouts or casual summer days.</p>
+                        <a href="#" class="button-small view-details-btn" data-product-id="men-tank-white">View Details</a>
                     </div>
                     <div class="product-item">
-                        <img src="imgs/mm.png" alt="Polo T-shirt">
-                        <h3>Polo T-shirt</h3>
-                        <p>Your go-to denim for that effortlessly cool, lived-in look. Perfect with any pants.</p>
-                        <a href="#" class="button-small view-details-btn" data-product-id="cropped-hoodie">View Details</a>
+                        <img src="imgs/nt.png" alt="Navy Blue Tank Top">
+                        <h3>Deep Ocean Tank</h3>
+                        <p>Classic navy for a cool and confident look. Moisture-wicking fabric.</p>
+                        <a href="#" class="button-small view-details-btn" data-product-id="men-tank-navy">View Details</a>
                     </div>
                     <div class="product-item">
-                        <img src="imgs/m3.png" alt="Oversized Cropped Hoodie">
-                        <h3>Oversized Cropped Hoodie</h3>
-                        <p>Rock this classic plaid skater dress for an edgy yet playful vibe.</p>
-                        <a href="#" class="button-small view-details-btn" data-product-id="skater-dress">View Details</a>
+                        <img src="imgs/gt.png" alt="Charcoal Grey Tank Top">
+                        <h3>Charcoal Active Tank</h3>
+                        <p>Sporty and comfortable, designed for maximum movement.</p>
+                        <a href="#" class="button-small view-details-btn" data-product-id="men-tank-charcoal">View Details</a>
                     </div>
                 </div>
             </div>
         </section>
+        <section id="sneakers" class="section-padding">
+            <div class="container">
+                <h2>Sneakers</h2>
+                <div class="product-grid">
+                    <div class="product-item">
+                        <img src="imgs/ws.png" alt="Classic White Sneakers">
+                        <h3>Classic White Sneakers</h3>
+                        <p>Clean and versatile, these white sneakers are a timeless addition to any outfit.</p>
+                        <a href="#" class="button-small view-details-btn" data-product-id="men-sneaker-white">View Details</a>
+                    </div>
+                    <div class="product-item">
+                        <img src="imgs/bs.png" alt="Urban High-Top Sneakers">
+                        <h3>Urban High-Top Sneakers</h3>
+                        <p>Elevate your street style with these comfortable and edgy black high-tops.</p>
+                        <a href="#" class="button-small view-details-btn" data-product-id="men-sneaker-black">View Details</a>
+                    </div>
+                    <div class="product-item">
+                        <img src="imgs/as.png" alt="Retro Runner Sneakers">
+                        <h3>Retro Runner Sneakers</h3>
+                        <p>Vintage-inspired design meets modern comfort in these stylish running shoes.</p>
+                        <a href="#" class="button-small view-details-btn" data-product-id="men-sneaker-retro">View Details</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="mens-hero" class="section-padding">
+
+        </section>
+
+        <section id="polo-tshirts" class="section-padding">
+            <div class="container">
+                <h2>Polo T-shirts</h2>
+                <div class="product-grid">
+                    <div class="product-item">
+                        <img src="imgs/gp2.png" alt="Green Polo T-shirt">
+                        <h3>Classic Green Polo</h3>
+                        <p>A timeless essential for a sharp, casual look. Made with breathable pique fabric.</p>
+                        <a href="#" class="button-small view-details-btn" data-product-id="men-polo-green">View Details</a>
+                    </div>
+                    <div class="product-item">
+                        <img src="imgs/pb.png" alt="Black Polo T-shirt">
+                        <h3>Stealth Black Polo</h3>
+                        <p>Sleek and versatile, perfect for any occasion. Elevate your everyday style.</p>
+                        <a href="#" class="button-small view-details-btn" data-product-id="men-polo-black">View Details</a>
+                    </div>
+                    <div class="product-item">
+                        <img src="imgs/ap2.png" alt="Aqua Polo T-shirt">
+                        <h3>Aqua Breeze Polo</h3>
+                        <p>Add a pop of color to your wardrobe. Lightweight and comfortable.</p>
+                        <a href="#" class="button-small view-details-btn" data-product-id="men-polo-aqua">View Details</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="oversized-hoodies" class="section-padding">
+            <div class="container">
+                <h2>Oversized Hoodies</h2>
+                <div class="product-grid">
+                    <div class="product-item">
+                        <img src="imgs/gh.png" alt="Grey Oversized Hoodie">
+                        <h3>Urban Grey Hoodie</h3>
+                        <p>Ultimate comfort and street style. Perfect for layering or lounging.</p>
+                        <a href="#" class="button-small view-details-btn" data-product-id="men-hoodie-grey">View Details</a>
+                    </div>
+                    <div class="product-item">
+                        <img src="imgs/fh.png" alt="Forest Green Oversized Hoodie">
+                        <h3>Forest Vibe Hoodie</h3>
+                        <p>Deep green tones for a natural, relaxed look. Soft fleece interior.</p>
+                        <a href="#" class="button-small view-details-btn" data-product-id="men-hoodie-forest">View Details</a>
+                    </div>
+                    <div class="product-item">
+                        <img src="imgs/ch.png" alt="Cream Oversized Hoodie">
+                        <h3>Cream Comfort Hoodie</h3>
+                        <p>Effortlessly chic and cozy. A versatile addition to your casual wear.</p>
+                        <a href="#" class="button-small view-details-btn" data-product-id="men-hoodie-cream">View Details</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        
+
+      
     </main>
 
     <footer>
@@ -1270,10 +900,8 @@
                 }
             });
 
-            // Intersection Observer for fade-in animations
-            const productItems = document.querySelectorAll('#featured-products .product-item');
-            const featuredLookImage = document.querySelector('#featured-look .look-image'); // Corrected variable name
-            const productShowcase = document.getElementById('product-showcase');
+            // Intersection Observer for fade-in animations on product items
+            const productItems = document.querySelectorAll('.product-item');
 
             const observerOptions = {
                 root: null,
@@ -1284,104 +912,142 @@
             const contentObserver = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        // Check if it's a product item
-                        if (entry.target.classList.contains('product-item')) {
-                            const index = Array.from(productItems).indexOf(entry.target);
-                            setTimeout(() => {
-                                entry.target.classList.add('is-visible');
-                            }, index * 150); // Delay each product item
-                        } else {
+                        const index = Array.from(productItems).indexOf(entry.target);
+                        setTimeout(() => {
                             entry.target.classList.add('is-visible');
-                        }
+                        }, index * 20); // Adjusted delay to 20ms for even faster fade-in
                         observer.unobserve(entry.target);
                     }
                 });
             }, observerOptions);
 
-            // Observe all relevant elements
-            productItems.forEach(item => { // Observe all product items
+            // Observe all product items
+            productItems.forEach(item => {
                 contentObserver.observe(item);
             });
 
-            // Observe the featured look image
-            if (featuredLookImage) {
-                contentObserver.observe(featuredLookImage);
-            }
-
-            if (productShowcase) {
-                contentObserver.observe(productShowcase);
-            }
-
-
-            // Product Data for Modals
+            // Product Data for Modals (Men's specific products)
             const productData = {
-                'featured-look-teen': {
-                    title: 'The Urban Edge Collection: Your Vibe, Unfiltered',
+                'men-polo-green': {
+                    title: 'Classic Green Polo: Everyday Essential',
                     fullDescription: `
-                        <p>Step into your power with our Urban Edge Collection. This featured look is all about comfort and bold self-expression, featuring our super soft, oversized graphic hoodie that's perfect for any mood.</p>
-                        <p>Paired with our perfectly distressed straight-leg denim and the latest chunky sneakers, this outfit is designed for maximum impact and effortless cool. Show the world your true vibe, no filters needed.</p>
-                        <p><strong>Key Pieces in This Look:</strong></p>
-                        <ul>
-                            <li>"Unfiltered" Oversized Graphic Hoodie (Color: Charcoal Fade)</li>
-                            <li>Rebel Straight-Leg Distressed Jeans (Wash: Vintage Blue)</li>
-                            <li>VibeStride Chunky Platform Sneakers (Color: Cloud White)</li>
-                        </ul>
-                        <p>Mix, match, and make it yours. Vibe Threads is here to help you express every side of you.</p>
+                        <p>The Classic Green Polo is a wardrobe staple, offering a perfect blend of comfort and timeless style. Crafted from premium pique cotton, it's breathable and soft, ideal for any casual or smart-casual setting.</p>
+                        <p>Features a ribbed collar, two-button placket, and a classic fit that ensures a polished look. Pair it with chinos for a refined ensemble or jeans for a relaxed vibe.</p>
+                        <p><strong>Material:</strong> 100% Pique Cotton</p>
+                        <p><strong>Care:</strong> Machine wash cold, tumble dry low.</p>
                     `,
-                    imageUrl: 'imgs/modelll.png'
+                    imageUrl: 'imgs/gp2.png'
                 },
-                'distressed-jeans': {
-                    title: 'Plaid Skater Dress: Edgy & Playful',
+                'men-polo-black': {
+                    title: 'Stealth Black Polo: Versatile & Modern',
                     fullDescription: `
-                        <p>Unleash your inner rebel with our Plaid Skater Dress. This iconic dress combines a classic plaid pattern with a fun, flirty skater silhouette, giving you an edgy yet playful look that's perfect for concerts, parties, or just hanging out.</p>
-                        <p>Made from a comfortable, breathable fabric, it features a fitted bodice and a flared skirt that moves with you. Pair it with combat boots or sneakers to complete your vibe.</p>
-                        <p><strong>Features:</strong></p>
-                        <ul>
-                            <li>Classic plaid pattern.</li>
-                            <li>Flattering skater silhouette.</li>
-                            <li>Comfortable and breathable fabric.</li>
-                            <li>Zipper closure at back.</li>
-                            <li>Perfect for a bold, youthful statement.</li>
-                        </ul>
-                        <p><strong>Care:</strong> Machine wash cold. Hang to dry.</p>
+                        <p>Our Stealth Black Polo is designed for versatility and a modern aesthetic. Its deep black hue makes it a sophisticated choice that can be dressed up or down with ease.</p>
+                        <p>Made from a soft, durable fabric that retains its shape and color after multiple washes. Features a subtle texture and a comfortable fit, perfect for day-to-night wear.</p>
+                        <p><strong>Material:</strong> 60% Cotton, 40% Polyester</p>
+                        <p><strong>Care:</strong> Machine wash cold, hang dry.</p>
                     `,
-                    imageUrl: 'imgs/skirt.png'},
-                'cropped-hoodie': {
-                     title: ' Classic Comfort Polo: Your Everyday Essential',
-                    fullDescription: `
-                                                                                    <p>Elevate your everyday style with our Classic Comfort Polo. Crafted from premium, breathable pique fabric, this polo offers a timeless silhouette with modern comfort. Its soft texture and refined fit make it perfect for both casual outings and smart-casual occasions.</p>
-                        <p>Featuring a durable ribbed collar, a classic two-button placket, and subtle side vents for ease of movement, this polo is designed for lasting wear and effortless versatility. Available in a wide range of colors to seamlessly integrate into your wardrobe.</p>
-                        <p><strong>Features:</strong></p>
-                        <ul>
-                            <li>Ultra-soft fleece fabric.</li>
-                            <li>Oversized fit for maximum comfort.</li>
-                            <li>Trendy cropped length.</li>
-                            <li>Ribbed cuffs and hem.</li>
-                            <li>Drawstring hood.</li>
-                        </ul>
-                        <p><strong>Care:</strong> Machine wash cold. Tumble dry low.</p>
-                    `,
-                    imageUrl: 'imgs/mm.png'
+                    imageUrl: 'imgs/pb.png'
                 },
-
-                'skater-dress': {
-                    title: 'Oversized Cropped Hoodie: Cozy & Chic',
+                'men-polo-aqua': {
+                    title: 'Aqua Breeze Polo: Fresh & Vibrant',
                     fullDescription: `
-                                                                                    <p>Get ready to live in our Oversized Cropped Hoodie. It's the perfect blend of cozy comfort and on-trend style, designed with a relaxed, roomy fit and a modern cropped length. Made from super soft fleece, it's ideal for lounging, heading out, or layering up.</p>
-                        <p>Available in a range of vibrant colors to match your mood. Pair it with high-waisted jeans or joggers for an instant cool factor.</p>
-                        <p><strong>Features:</strong></p>
-                        <ul>
-                            <li>Ultra-soft fleece fabric.</li>
-                            <li>Oversized fit for maximum comfort.</li>
-                            <li>Trendy cropped length.</li>
-                            <li>Ribbed cuffs and hem.</li>
-                            <li>Drawstring hood.</li>
-                        </ul>
-                        <p><strong>Care:</strong> Machine wash cold. Tumble dry low.</p>
+                        <p>Inject a refreshing pop of color into your wardrobe with the Aqua Breeze Polo. Its vibrant aqua shade is perfect for warmer days, offering a cool and stylish look.</p>
+                        <p>Lightweight and highly breathable, this polo ensures maximum comfort even in humid conditions. Ideal for casual outings, beach days, or adding a lively touch to your everyday attire.</p>
+                        <p><strong>Material:</strong> 95% Cotton, 5% Spandex</p>
+                        <p><strong>Care:</strong> Machine wash cold, gentle cycle.</p>
                     `,
-                    imageUrl: 'imgs/m3.png'
+                    imageUrl: 'imgs/ap2.png'
                 },
-
+                'men-hoodie-grey': {
+                    title: 'Urban Grey Hoodie: Comfort & Style',
+                    fullDescription: `
+                        <p>The Urban Grey Hoodie is your go-to for effortless comfort and street-ready style. Its oversized fit provides a relaxed feel, while the soft fleece lining keeps you warm and cozy.</p>
+                        <p>Features a spacious hood with adjustable drawstrings and a large front kangaroo pocket. Perfect for casual wear, gym sessions, or simply chilling out.</p>
+                        <p><strong>Material:</strong> 80% Cotton, 20% Polyester Fleece</p>
+                        <p><strong>Care:</strong> Machine wash cold inside out, tumble dry low.</p>
+                    `,
+                    imageUrl: 'imgs/gh.png'
+                },
+                'men-hoodie-forest': {
+                    title: 'Forest Vibe Hoodie: Earthy & Relaxed',
+                    fullDescription: `
+                        <p>Embrace earthy tones with our Forest Vibe Hoodie. This oversized hoodie in a rich forest green offers a relaxed fit and incredibly soft feel, making it an instant favorite.</p>
+                        <p>Designed for comfort and style, it features ribbed cuffs and hem, and a cozy hood. Ideal for adding a touch of nature-inspired color to your casual wardrobe.</p>
+                        <p><strong>Material:</strong> 70% Cotton, 30% Recycled Polyester</p>
+                        <p><strong>Care:</strong> Machine wash cold, do not bleach.</p>
+                    `,
+                    imageUrl: 'imgs/fh.png'
+                },
+                'men-hoodie-cream': {
+                    title: 'Cream Comfort Hoodie: Chic & Cozy',
+                    fullDescription: `
+                        <p>The Cream Comfort Hoodie combines chic style with ultimate coziness. Its soft, neutral cream color makes it a versatile piece that pairs well with almost anything.</p>
+                        <p>With an oversized silhouette and a plush interior, it's perfect for those days when you want to feel comfortable without compromising on style. A must-have for your loungewear and casual collection.</p>
+                        <p><strong>Material:</strong> 100% Organic Cotton Fleece</p>
+                        <p><strong>Care:</strong> Hand wash cold or dry clean recommended.</p>
+                    `,
+                    imageUrl: 'imgs/ch.png'
+                },
+                'men-sneaker-white': {
+                    title: 'Classic White Sneakers: Timeless Style',
+                    fullDescription: `
+                        <p>Clean and effortlessly stylish, these Classic White Sneakers are a versatile foundation for any casual look. Crafted with a premium synthetic leather upper and a comfortable rubber sole, they offer all-day wearability.</p>
+                        <p>Their minimalist design makes them easy to pair with jeans, shorts, or even smart casual trousers. A true wardrobe essential for modern men.</p>
+                        <p><strong>Material:</strong> Synthetic Leather Upper, Rubber Sole</p>
+                        <p><strong>Care:</strong> Wipe clean with a damp cloth.</p>
+                    `,
+                    imageUrl: 'imgs/ws.png'
+                },
+                'men-sneaker-black': {
+                    title: 'Urban High-Top Sneakers: Edgy & Comfortable',
+                    fullDescription: `
+                        <p>Elevate your street style with our Urban High-Top Sneakers. These black high-tops feature a durable canvas upper and a cushioned sole for superior comfort. The ankle support and lace-up design provide a secure fit.</p>
+                        <p>Perfect for adding an edgy touch to your outfit, whether you're hitting the city streets or a casual gathering. Pair them with joggers or distressed jeans for a bold look.</p>
+                        <p><strong>Material:</strong> Canvas Upper, Rubber Sole</p>
+                        <p><strong>Care:</strong> Spot clean with mild detergent.</p>
+                    `,
+                    imageUrl: 'imgs/bs.png'
+                },
+                'men-sneaker-retro': {
+                    title: 'Retro Runner Sneakers: Vintage Vibe, Modern Comfort',
+                    fullDescription: `
+                        <p>Step back in time with our Retro Runner Sneakers, combining vintage-inspired design with modern comfort technology. These lightweight sneakers feature a breathable mesh upper with suede overlays for a classic athletic look.</p>
+                        <p>The responsive foam midsole provides excellent cushioning for all-day comfort, making them ideal for both active pursuits and casual wear. Stand out with a touch of nostalgia.</p>
+                        <p><strong>Material:</strong> Mesh & Suede Upper, Foam Midsole, Rubber Outsole</p>
+                        <p><strong>Care:</strong> Brush off dirt, hand wash with mild soap.</p>
+                    `,
+                    imageUrl: 'imgs/as.png'
+                },
+                'men-tank-white': {
+                    title: 'Essential White Tank: Breathable & Soft',
+                    fullDescription: `
+                        <p>The Essential White Tank is a must-have for its incredible softness and breathability. Perfect as a base layer or worn on its own for a clean, minimalist look.</p>
+                        <p>Made from high-quality cotton, it offers superior comfort and durability. Ideal for workouts, hot summer days, or simply relaxing at home.</p>
+                        <p><strong>Material:</strong> 100% Premium Cotton</p>
+                        <p><strong>Care:</strong> Machine wash cold, gentle cycle.</p>
+                    `,
+                    imageUrl: 'imgs/wt.png'
+                },
+                'men-tank-navy': {
+                    title: 'Deep Ocean Tank: Cool & Confident',
+                    fullDescription: `
+                        <p>Our Deep Ocean Tank in classic navy blue provides a cool and confident look. Its moisture-wicking properties make it excellent for active wear, keeping you dry and comfortable.</p>
+                        <p>Designed with a comfortable fit that allows for full range of motion. A versatile piece for your gym bag or casual summer wardrobe.</p>
+                        <p><strong>Material:</strong> 90% Polyester, 10% Spandex</p>
+                        <p><strong>Care:</strong> Machine wash cold, quick dry.</p>
+                    `,
+                    imageUrl: 'imgs/nt.png'
+                },
+                'men-tank-charcoal': {
+                    title: 'Charcoal Active Tank: Sporty & Comfortable',
+                    fullDescription: `
+                        <p>The Charcoal Active Tank is engineered for performance and comfort. Its dark charcoal grey color offers a sleek, sporty look, while the fabric ensures maximum breathability.</p>
+                        <p>Perfect for intense workouts, running, or any activity where freedom of movement is key. Its lightweight design makes it feel like a second skin.</p>
+                        <p><strong>Material:</strong> 85% Polyester, 15% Rayon</p>
+                        <p><strong>Care:</strong> Machine wash cold, air dry for best results.</p>
+                    `,
+                    imageUrl: 'imgs/gt.png'
+                }
             };
 
             const viewDetailsButtons = document.querySelectorAll('.view-details-btn');
@@ -1421,18 +1087,6 @@
                 });
             });
 
-            // Event listener for the "Shop This Look" button
-            const viewFeaturedLookBtn = document.getElementById('viewFeaturedLookBtn');
-            if (viewFeaturedLookBtn) {
-                viewFeaturedLookBtn.addEventListener('click', function(event) {
-                    event.preventDefault();
-                    const featuredLook = productData['featured-look-teen'];
-                    if (featuredLook) {
-                        openProductModal(featuredLook);
-                    }
-                });
-            }
-
             closeProductModalBtn.addEventListener('click', function() {
                 productDetailModal.classList.remove('active');
                 document.body.style.overflow = ''; // Restore background scrolling
@@ -1446,53 +1100,29 @@
                 }
             });
 
-            // Text Typing Animation
-            function typeWriter(elementId, text, delay = 100) {
-                let i = 0;
-                const targetElement = document.getElementById(elementId);
-                if (!targetElement) return;
+            // Smooth scrolling to section on page load if hash exists
+            function scrollToHash() {
+                if (window.location.hash) {
+                    const targetElement = document.querySelector(window.location.hash);
+                    if (targetElement) {
+                        // Adjust scroll position to account for fixed header
+                        const headerOffset = document.querySelector('header').offsetHeight + 20; // Add some padding
+                        const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+                        const offsetPosition = elementPosition - headerOffset;
 
-                // Clear existing content and add the typing effect class
-                targetElement.innerHTML = '';
-                targetElement.classList.add('typing-effect');
-
-                function type() {
-                    if (i < text.length) {
-                        targetElement.innerHTML += text.charAt(i);
-                        i++;
-                        setTimeout(type, delay);
-                    } else {
-                        // Once typing is complete, remove the blinking cursor effect
-                        targetElement.style.borderRight = 'none'; // Remove the border
-                        targetElement.classList.remove('typing-effect'); // Remove the animation class
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: "smooth"
+                        });
                     }
                 }
-                type();
             }
 
-            // Call the function for the desired element
-            typeWriter('urbanEdgeTitle', 'The Urban Edge Collection');
+            // Call scrollToHash on page load
+            scrollToHash();
 
-            // Smooth scrolling for navigation links
-            document.getElementById('mobileAppLink').addEventListener('click', function(e) {
-                e.preventDefault();
-                document.getElementById('product-showcase').scrollIntoView({ behavior: 'smooth' });
-                 // Close the dropdown after clicking (for mobile)
-                if (window.innerWidth <= 768) {
-                    mainNav.classList.remove('active');
-                    dropdowns.forEach(dropdown => dropdown.classList.remove('active'));
-                }
-            });
-
-            document.getElementById('shopByTrendLink').addEventListener('click', function(e) {
-                e.preventDefault();
-                document.getElementById('featured-products').scrollIntoView({ behavior: 'smooth' });
-                // Close the dropdown after clicking (for mobile)
-                if (window.innerWidth <= 768) {
-                    mainNav.classList.remove('active');
-                    dropdowns.forEach(dropdown => dropdown.classList.remove('active'));
-                }
-            });
+            // Re-call scrollToHash if hash changes (e.g., if navigating between sections on the same page)
+            window.addEventListener('hashchange', scrollToHash);
         });
     </script>
 </body>
