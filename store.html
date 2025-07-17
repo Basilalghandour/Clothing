@@ -1,0 +1,1268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FASHIONISTA - Our Store</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Bebas+Neue&family=Permanent+Marker&family=Passion+One:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZGqAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* Basic Reset & Typography */
+        body {
+            margin: 0;
+            font-family: 'Lato', sans-serif;
+            line-height: 1.6;
+            color: #00724a; /* All text in green */
+            background-color: #000000; /* Background color in black */
+            padding-top: 80px; /* Space for fixed header */
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Passion One', sans-serif;
+            color: #00724a; /* All text in green */
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        h1 { font-size: 3em; }
+        h2 { font-size: 2.5em; }
+        h3 { font-size: 1.8em; }
+
+        a {
+            text-decoration: none;
+            color: #FFFFFF; /* Changed to White */
+        }
+
+        a:hover {
+            text-decoration: underline;
+            color: #CCCCCC; /* Lighter white for hover */
+        }
+
+        /* Header - Main Navbar Bar */
+        header {
+            background-color: rgba(0, 114, 74, 0.8); /* Semi-transparent #00724a for navbar */
+            backdrop-filter: blur(10px);
+            border-radius: 25px;
+            padding: 8px 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 98%;
+            max-width: 1400px;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+        }
+
+        /* Container specifically for logo and toggle inside header */
+        header > .container {
+            display: flex; /* Keep flex for logo and toggle */
+            justify-content: space-between; /* Keep space between logo and toggle */
+            align-items: center;
+            flex-shrink: 0; /* Ensures it only takes space needed by content */
+            flex-grow: 0;   /* Prevents it from growing */
+            width: auto; /* Allow content to dictate width */
+            max-width: auto; /* Allow content to dictate width */
+            padding: 0 20px; /* Adjust padding as needed, might conflict with header padding if not careful */
+        }
+
+
+        /* Logo and Slogan Container */
+        .logo {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            flex-shrink: 0; /* Prevents shrinking */
+            margin-right: 187px;/* Removed margin-right: auto; as it's now handled by header > .container flex */
+        }
+
+        /* Brand Name Styling - Vibrant Gradient */
+        .logo a {
+            font-family: 'Permanent Marker', cursive;
+            font-size: 2.8em;
+            font-weight: 400;
+            letter-spacing: 2px;
+            background: linear-gradient(to right, #00724a, #000000); /* Green to Black */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+            display: inline-block;
+            transition: transform 0.3s ease;
+            margin-bottom: 0;
+            line-height: 1.2;
+            transform: rotate(-5deg);
+            padding: 5px 0;
+        }
+
+        .logo a:hover {
+            transform: rotate(-7deg) translateY(-2px);
+        }
+
+        /* Navigation */
+        nav {
+            flex-grow: 1; /* Allows nav to take available space */
+            display: flex;
+            justify-content: center; /* Center the ul within the nav */
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease-in-out;
+            flex-grow: 1; /* Allow ul to take available space within nav for better centering */
+        }
+
+        nav ul li {
+            margin: 0 15px;
+            position: relative;
+        }
+
+        /* New rule: Push the last navigation item to the far right */
+        nav ul li:last-child {
+            margin-left: auto;
+        }
+
+        nav ul li a {
+            font-family: 'Passion One', sans-serif;
+            font-weight: 400;
+            color: #000000; /* Black for main nav links and experience text */
+            transition: color 0.3s ease;
+            padding: 5px 0;
+            display: block;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 1.1em;
+        }
+
+        nav ul li a:hover {
+            color: #339966; /* Lighter Green on hover */
+            text-decoration: none;
+        }
+
+        /* Active Nav Item Styling */
+        nav ul li a.active-nav-item {
+            color: #ffffff !important; /* Vibrant Green - kept for active highlight, not general links */
+            font-weight: 700 !important;
+        }
+
+        /* Dropdown Icon */
+        .dropdown-icon {
+            margin-left: 5px;
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        .dropdown:hover .dropdown-icon {
+            transform: rotate(180deg);
+        }
+
+        /* Dropdown Menu */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #00724a; /* Green for dropdown background */
+            min-width: 180px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            z-index: 1;
+            border-radius: 5px;
+            padding: 10px 0;
+            top: 100%;
+            left: 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+        }
+
+        .dropdown-content a {
+            color: #000000 !important; /* Black for dropdown text */
+            padding: 10px 20px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+            text-transform: none;
+            letter-spacing: 0.8px;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 0.95em;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+
+        .dropdown-content a:hover {
+            background-color: rgba(0, 114, 74, 0.6); /* Darker Green on hover */
+            color: #d4eed4 !important; /* Lighter green on hover */
+            text-decoration: none;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        /* Hamburger Menu Toggle - Hidden on desktop */
+        .menu-toggle {
+            display: none; /* Hidden by default for desktop */
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            cursor: pointer;
+            z-index: 1001; /* Ensure it's above other header elements */
+            position: relative; /* Add position relative for proper stacking context */
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 100%;
+            height: 3px;
+            background-color: #000000; /* Black for visibility on green background */
+            border-radius: 2px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* Enriched Buttons */
+        .button {
+            display: inline-block;
+            background-color: #00724a; /* Green */
+            color: #000000; /* Black text */
+            padding: 14px 30px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            border: none;
+            font-family: 'Lato', sans-serif;
+        }
+
+        .button:hover {
+            background-color: #004c31; /* Darker Green on hover */
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+            text-decoration: none;
+            color: #000000 !important; /* Keep text black on hover */
+        }
+
+        .button-small {
+            display: inline-block;
+            background-color: #00724a; /* Green */
+            color: #000000; /* Black text */
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-size: 0.95em;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            font-weight: 600;
+            border: none;
+            font-family: 'Lato', sans-serif;
+        }
+
+        .button-small:hover {
+            background-color: #004c31; /* Darker Green on hover */
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+            text-decoration: none;
+            color: #000000; /* Keep text black on hover */
+        }
+
+        /* Section Padding */
+        .section-padding {
+            padding: 60px 0;
+        }
+
+        /* General H2 styling for sections */
+        .section-padding h2 {
+            text-align: center;
+            color: #00724a; /* Green */
+            font-size: 2.5em;
+            position: relative;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        .section-padding h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(to right, #00724a, #ffffff); /* Green to White */
+            border-radius: 2px;
+        }
+
+        /* Store Specific Styles */
+        #store-hero {
+            background-color: #000000; /* Black */
+            padding: 80px 0;
+            text-align: center;
+            border-bottom: 1px solid rgba(0, 114, 74, 0.3); /* Green border */
+        }
+
+        .filter-buttons {
+            text-align: center;
+            margin-bottom: 40px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .filter-button {
+            background-color: #00724a; /* Green */
+            color: #000000; /* Black text */
+            padding: 10px 20px;
+            border-radius: 25px;
+            border: none;
+            cursor: pointer;
+            font-family: 'Lato', sans-serif;
+            font-weight: 600;
+            font-size: 1em;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .filter-button:hover {
+            background-color: #004c31; /* Darker Green */
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .filter-button.active {
+            background-color: #ffffff; /* Vibrant Green for active */
+            color: #000000; /* Black text */
+            box-shadow: 0 4px 10px rgba(15, 164, 175, 0.3);
+            transform: translateY(-1px);
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .product-item {
+            background-color: #000000; /* Black */
+            border: 1px solid rgba(0, 114, 74, 0.3); /* Green border */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.5s ease-out;
+            opacity: 0; /* Initial state for fade-in */
+            transform: translateY(20px);
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .product-item.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .product-item:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.15);
+        }
+
+        .product-item img {
+            max-width: 100%;
+            height: 250px; /* Fixed height for product images */
+            object-fit: cover; /* Ensures images cover the area without distortion */
+            border-radius: 4px;
+            margin-bottom: 15px;
+        }
+
+        .product-item h3 {
+            font-family: 'Passion One', sans-serif;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            color: #00724a; /* Green for product titles */
+            text-align: center;
+        }
+
+        .product-item p {
+            font-size: 0.9em;
+            color: #00724a; /* Green for product item description */
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #00724a; /* Green */
+            color: #000000; /* Black text */
+            padding: 40px 0;
+        }
+
+        footer .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            text-align: center;
+        }
+
+        /* Footer Logo Styling */
+        .footer-logo a {
+            font-family: 'Passion One', sans-serif;
+            font-size: 1.8em;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: #000000; /* Black */
+            transition: color 0.3s ease;
+            text-decoration: none;
+        }
+
+        .footer-logo a:hover {
+            color: #ffffff; /* White on hover */
+            text-decoration: none;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .social-icons a {
+            color: #000000; /* Black */
+            font-size: 1.5em;
+            transition: color 0.3s ease, transform 0.2s ease;
+            text-decoration: none;
+        }
+
+        .social-icons a:hover {
+            color: #ffffff;
+            transform: scale(1.1);
+            text-decoration: none;
+        }
+
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background-color: #000000; /* Black */
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            max-width: 700px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .modal-close-button {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 1.8em;
+            color: #00724a; /* Green */
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+
+        .modal-close-button:hover {
+            color: #339966; /* Lighter Green on hover */
+        }
+
+        .modal-title {
+            font-family: 'Passion One', sans-serif;
+            font-size: 2em;
+            color: #00724a; /* Green */
+            margin-top: 0;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .modal-body {
+            font-size: 1em;
+            color: #00724a; /* Green for modal body text */
+            line-height: 1.7;
+            text-align: left;
+        }
+
+        /* Style for image inside modal body */
+        .modal-body img {
+            max-width: 80%;
+            max-height: 300px;
+            height: auto;
+            display: block;
+            margin: 20px auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            object-fit: contain;
+        }
+
+        /* Responsiveness */
+        @media (max-width: 992px) {
+            header {
+                width: 95%;
+                padding: 6px 15px;
+                max-width: 900px;
+            }
+            nav {
+                margin-left: 0;
+            }
+            nav ul li {
+                margin: 0 10px;
+            }
+            nav ul li a {
+                font-size: 1em;
+                letter-spacing: 0.8px;
+            }
+            .logo a {
+                font-size: 2.2em;
+            }
+            h1 { font-size: 2.4em; }
+            h2 { font-size: 1.8em; }
+            h3 { font-size: 1.4em; }
+
+            .footer-logo a {
+                font-size: 1.6em;
+            }
+            .social-icons a {
+                font-size: 1.3em;
+            }
+
+            .section-padding h2 {
+                font-size: 2em;
+            }
+            .section-padding h2::after {
+                width: 60px;
+            }
+            .modal-content {
+                padding: 20px;
+                max-width: 95%;
+            }
+            .modal-title {
+                font-size: 1.8em;
+            }
+            .modal-close-button {
+                font-size: 1.5em;
+            }
+            .modal-body img {
+                max-width: 90%;
+                max-height: 250px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding-top: 0;
+            }
+            header {
+                position: fixed; /* KEEP THIS AS FIXED */
+                top: 0; /* Ensure it's at the very top */
+                left: 50%; /* Center it again */
+                transform: translateX(-50%); /* Center it again */
+                width: 98%; /* Match desktop width or adjust as needed */
+                max-width: 1400px; /* Keep max-width for consistency */
+                border-radius: 25px; /* Keep rounded corners if desired */
+                padding: 8px 20px; /* Keep consistent padding */
+                background-color: rgba(0, 114, 74, 0.8); /* Semi-transparent #00724a */
+                backdrop-filter: blur(10px); /* Keep blur if desired */
+                box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Keep shadow */
+                z-index: 1000;
+            }
+            header .container {
+                padding: 0 20px;
+                display: flex; /* Ensure flexbox for spacing */
+                justify-content: space-between; /* Space out logo and toggle */
+                align-items: center;
+                width: 100%; /* Ensure it takes full width of header's content area */
+                box-sizing: border-box; /* Crucial for including padding within the 100% width */
+            }
+            nav {
+                margin-left: 0;
+            }
+
+            .menu-toggle {
+                display: flex; /* Make hamburger visible on mobile */
+                z-index: 1002; /* Ensure it's above the nav when collapsed */
+            }
+
+            nav {
+                position: absolute;
+                top: 100%; /* Position below the header */
+                left: 0;
+                width: 100%;
+                background-color: #00724a; /* Green */
+                box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+                border-top: 1px solid rgba(0, 114, 74, 0.3); /* Green border */
+                overflow: hidden;
+                max-height: 0;
+                opacity: 0;
+                visibility: hidden;
+                transition: max-height 0.4s ease-in-out, opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
+                z-index: 990;
+                display: block; /* Change display to block for vertical stacking */
+            }
+
+            nav.active {
+                max-height: 400px; /* Increased from 400px for more content */
+                opacity: 1;
+                visibility: visible;
+                z-index: 990;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 15px 20px;
+                justify-content: flex-start;
+            }
+
+            nav ul li {
+                margin: 10px 0;
+                width: 100%;
+            }
+
+            /* Remove auto margin for last child on mobile */
+            nav ul li:last-child {
+                margin-left: 0; /* Reset margin-left: auto for mobile */
+            }
+
+            /* Adjust dropdown for mobile menu */
+            .dropdown-content {
+                position: static;
+                box-shadow: none;
+                padding-left: 20px;
+                min-width: unset;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                max-height: 0;
+                transition: max-height 0.3s ease-in-out;
+            }
+            .dropdown:hover .dropdown-content,
+            .dropdown.active .dropdown-content {
+                max-height: 200px;
+            }
+
+            /* Rotate dropdown icon in mobile when active */
+            .dropdown.active .dropdown-icon {
+                transform: rotate(180deg);
+            }
+
+            /* Adjust logo and slogan for small screens */
+            .logo {
+                align-items: center;
+                margin-right: 0 !important; /* Remove the auto margin on mobile */
+            }
+            .logo a {
+                font-size: 2em;
+            }
+
+            footer .container {
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">Fashionista</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <nav id="main-nav">
+            <ul>
+                <li class="dropdown">
+                    <a href="index.html#product-showcase" class="dropbtn">Discover <span class="dropdown-icon">&#9660;</span></a>
+                    <div class="dropdown-content">
+                        <a href="index.html#product-showcase">Our Mobile App</a>
+                        <a href="index.html#featured-products">Shop by Trend</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="women.html" class="dropbtn">Women' Section <span class="dropdown-icon">&#9660;</span></a>
+                    <div class="dropdown-content">
+                        <a href="women.html#cropped-hoodies">Cropped hoodies</a>
+                        <a href="women.html#unique-dresses">Unique Dresses</a>
+                        <a href="women.html#comfy-tops">Comfy tops</a>
+                        <a href="women.html#low-raised-jeans">Low Raised Jeans</a>
+                    </div>
+                </li>
+                                <li class="dropdown">
+                    <a href="men.html" class="dropbtn">Men's Section <span class="dropdown-icon">&#9660;</span></a>
+                    <div class="dropdown-content">
+                        <a href="men.html#polo-tshirts">Polo t-shirts</a>
+                        <a href="men.html#oversized-hoodies">Oversized Hoodies</a>
+                        <a href="men.html#sneakers">Sneakers</a>
+                        <a href="men.html#tank-tops">Tank Tops</a>
+                    </div>
+                </li>
+
+                <li class="dropdown">
+                    <a href="information.html" class="dropbtn">Information <span class="dropdown-icon">&#9660;</span></a>
+                    <div class="dropdown-content">
+                        <a href="information.html#size-guide">Size Guide</a>
+                        <a href="information.html#shipping-returns">Shipping & Returns</a>
+                        <a href="information.html#faq">FAQ</a>
+                        <a href="information.html#contact-us">Contact Us</a>
+                    </div>
+                </li>
+                <li><a href="store.html" class="active-nav-item">Store</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="store-hero" class="section-padding">
+            <div class="container">
+                <h1>Explore Our Full Collection</h1>
+                <p style="text-align: center; font-size: 1.1em; color: #00724a;">Browse all our fashion-forward products. Use the filters below to find exactly what you're looking for!</p>
+            </div>
+        </section>
+
+        <section id="all-products" class="section-padding">
+            <div class="container">
+                <h2>Our Products</h2>
+                <div class="filter-buttons">
+                    <button class="filter-button active" data-filter="all">All Products</button>
+                    <button class="filter-button" data-filter="men">Men's</button>
+                    <button class="filter-button" data-filter="women">Women's</button>
+                    <button class="filter-button" data-filter="hoodies">Hoodies</button>
+                    <button class="filter-button" data-filter="dresses">Dresses</button>
+                    <button class="filter-button" data-filter="sneakers">Sneakers</button>
+                    <button class="filter-button" data-filter="tops">Tops</button>
+                    <button class="filter-button" data-filter="jeans">Jeans</button>
+                    <button class="filter-button" data-filter="polo-tshirts">Polo T-shirts</button>
+                    <button class="filter-button" data-filter="tank-tops">Tank Tops</button>
+                </div>
+                <div class="product-grid" id="productGrid">
+                    <!-- Products will be dynamically loaded here -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-logo">
+                <a href="index.html">FASHIONISTA</a>
+            </div>
+            <p class="footer-rights">&copy; 2025 Fashionista. All rights reserved.</p>
+            <div class="social-icons">
+                <a href="https://tiktok.com/vibethreads" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                <a href="https://instagram.com/vibethreads" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://pinterest.com/vibethreads" target="_blank" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <div class="modal-overlay" id="productDetailModal">
+        <div class="modal-content">
+            <button class="modal-close-button" id="closeProductModalBtn">&times;</button>
+            <h3 class="modal-title" id="productModalTitle"></h3>
+            <div class="modal-body" id="productModalBody"></div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.getElementById('menu-toggle');
+            const mainNav = document.getElementById('main-nav');
+            const dropdowns = document.querySelectorAll('.dropdown');
+            const productGrid = document.getElementById('productGrid');
+            const filterButtons = document.querySelectorAll('.filter-button');
+
+            // Handle mobile menu toggle
+            if (menuToggle && mainNav) {
+                menuToggle.addEventListener('click', function() {
+                    mainNav.classList.toggle('active');
+                    // Close any open dropdowns when main nav is toggled
+                    dropdowns.forEach(dropdown => {
+                        dropdown.classList.remove('active');
+                    });
+                });
+            }
+
+            // Handle mobile dropdown clicks
+            dropdowns.forEach(dropdown => {
+                dropdown.addEventListener('click', function(event) {
+                    if (window.innerWidth <= 768) {
+                        // Check if the clicked element is the dropdown button or within it
+                        if (event.target.classList.contains('dropbtn') || event.target.closest('.dropbtn')) {
+                            event.preventDefault(); // Prevent default link behavior for dropdown button
+                            this.classList.toggle('active'); // Toggle active class for the current dropdown
+                        }
+                    }
+                });
+            });
+
+            // Close mobile menu and dropdowns when clicking outside
+            document.addEventListener('click', function(event) {
+                if (window.innerWidth <= 768) {
+                    const isClickInsideNav = mainNav.contains(event.target);
+                    const isClickInsideToggle = menuToggle.contains(event.target);
+
+                    // Only close if the click is outside both the nav and the toggle button
+                    if (!isClickInsideNav && !isClickInsideToggle) {
+                        mainNav.classList.remove('active');
+                        dropdowns.forEach(dropdown => {
+                            dropdown.classList.remove('active');
+                        });
+                    }
+                }
+            });
+
+            // Consolidated Product Data
+            const allProducts = [
+                // Men's Products
+                {
+                    id: 'men-polo-green',
+                    name: 'Classic Green Polo',
+                    description: 'A timeless essential for a sharp, casual look.',
+                    fullDescription: `
+                        <p>The Classic Green Polo is a wardrobe staple, offering a perfect blend of comfort and timeless style. Crafted from premium pique cotton, it's breathable and soft, ideal for any casual or smart-casual setting.</p>
+                        <p>Features a ribbed collar, two-button placket, and a classic fit that ensures a polished look. Pair it with chinos for a refined ensemble or jeans for a relaxed vibe.</p>
+                        <p><strong>Material:</strong> 100% Pique Cotton</p>
+                        <p><strong>Care:</strong> Machine wash cold, tumble dry low.</p>
+                    `,
+                    imageUrl: 'imgs/gp2.png',
+                    categories: ['men', 'polo-tshirts']
+                },
+                {
+                    id: 'men-polo-black',
+                    name: 'Stealth Black Polo',
+                    description: 'Sleek and versatile, perfect for any occasion.',
+                    fullDescription: `
+                        <p>Our Stealth Black Polo is designed for versatility and a modern aesthetic. Its deep black hue makes it a sophisticated choice that can be dressed up or down with ease.</p>
+                        <p>Made from a soft, durable fabric that retains its shape and color after multiple washes. Features a subtle texture and a comfortable fit, perfect for day-to-night wear.</p>
+                        <p><strong>Material:</strong> 60% Cotton, 40% Polyester</p>
+                        <p><strong>Care:</strong> Machine wash cold, hang dry.</p>
+                    `,
+                    imageUrl: 'imgs/pb.png',
+                    categories: ['men', 'polo-tshirts']
+                },
+                {
+                    id: 'men-polo-aqua',
+                    name: 'Aqua Breeze Polo',
+                    description: 'Add a pop of color to your wardrobe. Lightweight and comfortable.',
+                    fullDescription: `
+                        <p>Inject a refreshing pop of color into your wardrobe with the Aqua Breeze Polo. Its vibrant aqua shade is perfect for warmer days, offering a cool and stylish look.</p>
+                        <p>Lightweight and highly breathable, this polo ensures maximum comfort even in humid conditions. Ideal for casual outings, beach days, or adding a lively touch to your everyday attire.</p>
+                        <p><strong>Material:</strong> 95% Cotton, 5% Spandex</p>
+                        <p><strong>Care:</strong> Machine wash cold, gentle cycle.</p>
+                    `,
+                    imageUrl: 'imgs/ap2.png',
+                    categories: ['men', 'polo-tshirts']
+                },
+                {
+                    id: 'men-hoodie-grey',
+                    name: 'Urban Grey Hoodie',
+                    description: 'Ultimate comfort and street style. Perfect for layering or lounging.',
+                    fullDescription: `
+                        <p>The Urban Grey Hoodie is your go-to for effortless comfort and street-ready style. Its oversized fit provides a relaxed feel, while the soft fleece lining keeps you warm and cozy.</p>
+                        <p>Features a spacious hood with adjustable drawstrings and a large front kangaroo pocket. Perfect for casual wear, gym sessions, or simply chilling out.</p>
+                        <p><strong>Material:</strong> 80% Cotton, 20% Polyester Fleece</p>
+                        <p><strong>Care:</strong> Machine wash cold inside out, tumble dry low.</p>
+                    `,
+                    imageUrl: 'imgs/gh.png',
+                    categories: ['men', 'hoodies']
+                },
+                {
+                    id: 'men-hoodie-forest',
+                    name: 'Forest Vibe Hoodie',
+                    description: 'Deep green tones for a natural, relaxed look. Soft fleece interior.',
+                    fullDescription: `
+                        <p>Embrace earthy tones with our Forest Vibe Hoodie. This oversized hoodie in a rich forest green offers a relaxed fit and incredibly soft feel, making it an instant favorite.</p>
+                        <p>Designed for comfort and style, it features ribbed cuffs and hem, and a cozy hood. Ideal for adding a touch of nature-inspired color to your casual wardrobe.</p>
+                        <p><strong>Material:</strong> 70% Cotton, 30% Recycled Polyester</p>
+                        <p><strong>Care:</strong> Machine wash cold, do not bleach.</p>
+                    `,
+                    imageUrl: 'imgs/fh.png',
+                    categories: ['men', 'hoodies']
+                },
+                {
+                    id: 'men-hoodie-cream',
+                    name: 'Cream Comfort Hoodie',
+                    description: 'Effortlessly chic and cozy. A versatile addition to your casual wear.',
+                    fullDescription: `
+                        <p>The Cream Comfort Hoodie combines chic style with ultimate coziness. Its soft, neutral cream color makes it a versatile piece that pairs well with almost anything.</p>
+                        <p>With an oversized silhouette and a plush interior, it's perfect for those days when you want to feel comfortable without compromising on style. A must-have for your loungewear and casual collection.</p>
+                        <p><strong>Material:</strong> 100% Organic Cotton Fleece</p>
+                        <p><strong>Care:</strong> Hand wash cold or dry clean recommended.</p>
+                    `,
+                    imageUrl: 'imgs/ch.png',
+                    categories: ['men', 'hoodies']
+                },
+                {
+                    id: 'men-sneaker-white',
+                    name: 'Classic White Sneakers',
+                    description: 'Clean and versatile, these white sneakers are a timeless addition to any outfit.',
+                    fullDescription: `
+                        <p>Clean and effortlessly stylish, these Classic White Sneakers are a versatile foundation for any casual look. Crafted with a premium synthetic leather upper and a comfortable rubber sole, they offer all-day wearability.</p>
+                        <p>Their minimalist design makes them easy to pair with jeans, shorts, or even smart casual trousers. A true wardrobe essential for modern men.</p>
+                        <p><strong>Material:</strong> Synthetic Leather Upper, Rubber Sole</p>
+                        <p><strong>Care:</strong> Wipe clean with a damp cloth.</p>
+                    `,
+                    imageUrl: 'imgs/ws.png',
+                    categories: ['men', 'sneakers']
+                },
+                {
+                    id: 'men-sneaker-black',
+                    name: 'Urban High-Top Sneakers',
+                    description: 'Elevate your street style with these comfortable and edgy black high-tops.',
+                    fullDescription: `
+                        <p>Elevate your street style with our Urban High-Top Sneakers. These black high-tops feature a durable canvas upper and a cushioned sole for superior comfort. The ankle support and lace-up design provide a secure fit.</p>
+                        <p>Perfect for adding an edgy touch to your outfit, whether you're hitting the city streets or a casual gathering. Pair them with joggers or distressed jeans for a bold look.</p>
+                        <p><strong>Material:</strong> Canvas Upper, Rubber Sole</p>
+                        <p><strong>Care:</strong> Spot clean with mild detergent.</p>
+                    `,
+                    imageUrl: 'imgs/bs.png',
+                    categories: ['men', 'sneakers']
+                },
+                {
+                    id: 'men-sneaker-retro',
+                    name: 'Retro Runner Sneakers',
+                    description: 'Vintage-inspired design meets modern comfort in these stylish running shoes.',
+                    fullDescription: `
+                        <p>Step back in time with our Retro Runner Sneakers, combining vintage-inspired design with modern comfort technology. These lightweight sneakers feature a breathable mesh upper with suede overlays for a classic athletic look.</p>
+                        <p>The responsive foam midsole provides excellent cushioning for all-day comfort, making them ideal for both active pursuits and casual wear. Stand out with a touch of nostalgia.</p>
+                        <p><strong>Material:</strong> Mesh & Suede Upper, Foam Midsole, Rubber Outsole</p>
+                        <p><strong>Care:</strong> Brush off dirt, hand wash with mild soap.</p>
+                    `,
+                    imageUrl: 'imgs/as.png',
+                    categories: ['men', 'sneakers']
+                },
+                {
+                    id: 'men-tank-white',
+                    name: 'Essential White Tank',
+                    description: 'Soft and breathable, perfect for workouts or casual summer days.',
+                    fullDescription: `
+                        <p>The Essential White Tank is a must-have for its incredible softness and breathability. Perfect as a base layer or worn on its own for a clean, minimalist look.</p>
+                        <p>Made from high-quality cotton, it offers superior comfort and durability. Ideal for workouts, hot summer days, or simply relaxing at home.</p>
+                        <p><strong>Material:</strong> 100% Premium Cotton</p>
+                        <p><strong>Care:</strong> Machine wash cold, gentle cycle.</p>
+                    `,
+                    imageUrl: 'imgs/wt.png',
+                    categories: ['men', 'tank-tops']
+                },
+                {
+                    id: 'men-tank-navy',
+                    name: 'Deep Ocean Tank',
+                    description: 'Classic navy for a cool and confident look. Moisture-wicking fabric.',
+                    fullDescription: `
+                        <p>Our Deep Ocean Tank in classic navy blue provides a cool and confident look. Its moisture-wicking properties make it excellent for active wear, keeping you dry and comfortable.</p>
+                        <p>Designed with a comfortable fit that allows for full range of motion. A versatile piece for your gym bag or casual summer wardrobe.</p>
+                        <p><strong>Material:</strong> 90% Polyester, 10% Spandex</p>
+                        <p><strong>Care:</strong> Machine wash cold, quick dry.</p>
+                    `,
+                    imageUrl: 'imgs/nt.png',
+                    categories: ['men', 'tank-tops']
+                },
+                {
+                    id: 'men-tank-charcoal',
+                    name: 'Charcoal Active Tank',
+                    description: 'Sporty and breathable, ideal for intense workouts.',
+                    fullDescription: `
+                        <p>The Charcoal Active Tank is engineered for performance and comfort during your most intense workouts. Its lightweight, breathable fabric wicks away sweat, keeping you cool and dry.</p>
+                        <p>The athletic fit allows for unrestricted movement, making it perfect for running, training, or any physical activity. A versatile addition to your activewear collection.</p>
+                        <p><strong>Material:</strong> 85% Polyester, 15% Spandex</p>
+                        <p><strong>Care:</strong> Machine wash cold, do not iron print.</p>
+                    `,
+                    imageUrl: 'imgs/gt.png',
+                    categories: ['men', 'tank-tops']
+                },
+                // Women's Products
+                {
+                    id: 'women-hoodie-black',
+                    name: 'Essential Black Cropped Hoodie',
+                    description: 'A versatile staple for a chic, relaxed look. Perfect for layering or active wear.',
+                    fullDescription: `
+                        <p>The Essential Black Cropped Hoodie is a must-have for any wardrobe, offering a perfect blend of comfort and contemporary style. Its soft fleece fabric ensures warmth, while the cropped length adds a trendy touch.</p>
+                        <p>Ideal for pairing with high-waisted jeans, leggings, or skirts. Features a cozy hood and ribbed cuffs and hem for a snug fit.</p>
+                        <p><strong>Material:</strong> 80% Cotton, 20% Polyester Fleece</p>
+                        <p><strong>Care:</strong> Machine wash cold inside out, tumble dry low.</p>
+                    `,
+                    imageUrl: 'imgs/bhh.png',
+                    categories: ['women', 'hoodies']
+                },
+                {
+                    id: 'women-hoodie-green',
+                    name: 'Forest Green Cropped Hoodie',
+                    description: 'Rich forest green for an earthy, stylish touch. Soft and cozy fleece interior.',
+                    fullDescription: `
+                        <p>Embrace nature-inspired style with our Forest Green Cropped Hoodie. This rich, deep green hoodie is crafted from a super-soft fleece, providing ultimate comfort and a relaxed fit.</p>
+                        <p>Its cropped silhouette makes it perfect for layering over tanks or pairing with your favorite high-waisted bottoms. A stylish choice for casual outings or cozy nights in.</p>
+                        <p><strong>Material:</strong> 70% Cotton, 30% Recycled Polyester</p>
+                        <p><strong>Care:</strong> Machine wash cold, do not bleach.</p>
+                    `,
+                    imageUrl: 'imgs/ghh.png',
+                    categories: ['women', 'hoodies']
+                },
+                {
+                    id: 'women-hoodie-white',
+                    name: 'Cloud White Cropped Hoodie',
+                    description: 'Light and airy, perfect for a fresh and clean aesthetic. Breathable fabric.',
+                    fullDescription: `
+                        <p>Achieve a fresh and clean aesthetic with our Cloud White Cropped Hoodie. Made from a lightweight and breathable fabric, this hoodie offers a comfortable and airy feel, perfect for warmer days or light layering.</p>
+                        <p>Its crisp white color makes it a versatile piece that brightens any outfit. Features a relaxed fit and a modern cropped cut.</p>
+                        <p><strong>Material:</strong> 100% Organic Cotton Fleece</p>
+                        <p><strong>Care:</strong> Hand wash cold or dry clean recommended.</p>
+                    `,
+                    imageUrl: 'imgs/whh.png',
+                    categories: ['women', 'hoodies']
+                },
+                {
+                    id: 'women-dress-abstract',
+                    name: 'Abstract Print Midi Dress',
+                    description: 'Stand out with this artistic midi dress featuring a unique abstract pattern.',
+                    fullDescription: `
+                        <p>Make a bold artistic statement with our Abstract Print Midi Dress. This unique dress features a captivating abstract pattern that ensures you stand out from the crowd. Crafted from a soft, flowing fabric, it offers both comfort and elegance.</p>
+                        <p>The midi length makes it suitable for various occasions, from art gallery visits to casual brunches. Pair with simple heels or sandals to let the print shine.</p>
+                        <p><strong>Material:</strong> 95% Polyester, 5% Spandex</p>
+                        <p><strong>Care:</strong> Machine wash cold, hang dry.</p>
+                    `,
+                    imageUrl: 'imgs/d1.png',
+                    categories: ['women', 'dresses']
+                },
+                {
+                    id: 'women-dress-boho',
+                    name: 'Boho Chic Maxi Dress',
+                    description: 'Flowy and comfortable, perfect for a relaxed yet elegant bohemian vibe.',
+                    fullDescription: `
+                        <p>Embrace effortless elegance with our Boho Chic Maxi Dress. This flowing maxi dress features delicate details and a relaxed silhouette, perfect for capturing a free-spirited bohemian vibe.</p>
+                        <p>Made from a lightweight and breathable fabric, it's ideal for warm weather, beach days, or summer festivals. Pair with sandals and layered jewelry for a complete look.</p>
+                        <p><strong>Material:</strong> 100% Rayon</p>
+                        <p><strong>Care:</strong> Hand wash cold, line dry.</p>
+                    `,
+                    imageUrl: 'imgs/d2.png',
+                    categories: ['women', 'dresses']
+                },
+                {
+                    id: 'women-dress-asymmetrical',
+                    name: 'Asymmetrical Knit Dress',
+                    description: 'Modern and edgy, this knit dress offers a unique silhouette and comfortable fit.',
+                    fullDescription: `
+                        <p>Infuse modern edge into your wardrobe with our Asymmetrical Knit Dress. This stylish dress features a unique asymmetrical hemline and a comfortable knit fabric, perfect for a contemporary and sophisticated look.</p>
+                        <p>Its flattering fit and soft texture make it suitable for both day and evening wear. Dress it up with heels or keep it casual with ankle boots.</p>
+                        <p><strong>Material:</strong> 70% Viscose, 30% Nylon Knit</p>
+                        <p><strong>Care:</strong> Dry clean recommended.</p>
+                    `,
+                    imageUrl: 'imgs/d3.png',
+                    categories: ['women', 'dresses']
+                },
+                {
+                    id: 'women-top-ribbed',
+                    name: 'Ribbed Knit Long Sleeve Top',
+                    description: 'Soft and stretchy, perfect for everyday comfort and effortless style.',
+                    fullDescription: `
+                        <p>Experience everyday comfort with our Ribbed Knit Long Sleeve Top. This soft and stretchy top is perfect for layering or wearing on its own. Its ribbed texture adds a subtle detail, while the comfortable fit makes it ideal for any casual occasion.</p>
+                        <p>A versatile piece that can be dressed up or down. Perfect for transitional weather.</p>
+                        <p><strong>Material:</strong> 95% Cotton, 5% Spandex Rib</p>
+                        <p><strong>Care:</strong> Machine wash cold, lay flat to dry.</p>
+                    `,
+                    imageUrl: 'imgs/tt1.png',
+                    categories: ['women', 'tops']
+                },
+                {
+                    id: 'women-top-graphic',
+                    name: 'Oversized Graphic Tee',
+                    description: 'Make a statement with this loose-fit tee featuring a unique graphic print.',
+                    fullDescription: `
+                        <p>Make a bold statement with our Oversized Graphic Tee. This loose-fit tee features a unique graphic print that expresses your individuality. Made from soft, breathable cotton, it offers ultimate comfort for all-day wear.</p>
+                        <p>Perfect for a casual, street-style look. Pair it with jeans, shorts, or a skirt for an effortlessly cool outfit.</p>
+                        <p><strong>Material:</strong> 100% Cotton Jersey</p>
+                        <p><strong>Care:</strong> Machine wash cold, gentle cycle, hang dry.</p>
+                    `,
+                    imageUrl: 'imgs/tt2.png',
+                    categories: ['women', 'tops']
+                },
+                {
+                    id: 'women-top-modal',
+                    name: 'Soft Modal Tank Top',
+                    description: 'Luxuriously soft and breathable, ideal for lounging or layering.',
+                    fullDescription: `
+                        <p>Indulge in luxurious comfort with our Soft Modal Tank Top. Crafted from incredibly smooth and breathable modal fabric, this tank feels like a second skin. Its lightweight design makes it perfect for lounging, sleeping, or as a comfortable base layer.</p>
+                        <p>A simple yet essential piece for your everyday comfort.</p>
+                        <p><strong>Material:</strong> 90% Modal, 10% Spandex</p>
+                        <p><strong>Care:</strong> Machine wash cold, delicate cycle.</p>
+                    `,
+                    imageUrl: 'imgs/tt3.png',
+                    categories: ['women', 'tops']
+                },
+                {
+                    id: 'women-jeans-dark',
+                    name: 'Dark Wash Low Rise Jeans',
+                    description: 'Classic dark wash with a modern low-rise fit for a sleek silhouette.',
+                    fullDescription: `
+                        <p>Achieve a sleek and modern silhouette with our Dark Wash Low Rise Jeans. These jeans offer a classic dark indigo wash with a flattering low-rise fit that sits comfortably on your hips.</p>
+                        <p>Made from stretch denim for ultimate comfort and flexibility, they are perfect for both casual and dressed-up looks. A versatile addition to your denim collection.</p>
+                        <p><strong>Material:</strong> 98% Cotton, 2% Spandex Denim</p>
+                        <p><strong>Care:</strong> Machine wash cold inside out, tumble dry low.</p>
+                    `,
+                    imageUrl: 'imgs/jj1.png',
+                    categories: ['women', 'jeans']
+                },
+                {
+                    id: 'women-jeans-light',
+                    name: 'Light Wash Distressed Low Rise Jeans',
+                    description: 'Effortlessly cool with distressed details and a comfortable low-rise cut.',
+                    fullDescription: `
+                        <p>Embrace an effortlessly cool vibe with our Light Wash Distressed Low Rise Jeans. These jeans feature a trendy light wash with strategically placed distressed details for an authentic, lived-in look.</p>
+                        <p>The low-rise cut provides a comfortable and stylish fit, perfect for showcasing your favorite tops. Ideal for casual outings and adding an edgy touch to your ensemble.</p>
+                        <p><strong>Material:</strong> 100% Cotton Denim</p>
+                        <p><strong>Care:</strong> Machine wash cold, delicate cycle, hang dry.</p>
+                    `,
+                    imageUrl: 'imgs/jj2.png',
+                    categories: ['women', 'jeans']
+                },
+                {
+                    id: 'women-jeans-black',
+                    name: 'Black Low Rise Skinny Jeans',
+                    description: 'A timeless black skinny jean with a flattering low-rise fit for everyday wear.',
+                    fullDescription: `
+                        <p>A timeless essential for any wardrobe, our Black Low Rise Skinny Jeans offer a sleek and flattering fit. The classic black color makes them incredibly versatile, perfect for pairing with anything from casual tees to dressy blouses.</p>
+                        <p>Crafted from comfortable stretch denim, these jeans provide a snug yet flexible fit that moves with you throughout the day.</p>
+                        <p><strong>Material:</strong> 97% Cotton, 3% Spandex Denim</p>
+                        <p><strong>Care:</strong> Machine wash cold inside out, hang dry.</p>
+                    `,
+                    imageUrl: 'imgs/jj3.png',
+                    categories: ['women', 'jeans']
+                }
+            ];
+
+            // Function to render products based on filter
+            function renderProducts(filter) {
+                productGrid.innerHTML = ''; // Clear current products
+                const filteredProducts = allProducts.filter(product =>
+                    filter === 'all' || product.categories.includes(filter)
+                );
+
+                filteredProducts.forEach((product, index) => {
+                    const productItem = document.createElement('div');
+                    productItem.classList.add('product-item');
+                    productItem.dataset.productId = product.id; // Add data-product-id for modal
+
+                    productItem.innerHTML = `
+                        <img src="${product.imageUrl}" alt="${product.name}">
+                        <h3>${product.name}</h3>
+                        <p>${product.description}</p>
+                    `;
+                    productGrid.appendChild(productItem);
+
+                    // Add Intersection Observer for fade-in effect
+                    const observer = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                setTimeout(() => {
+                                    entry.target.classList.add('is-visible');
+                                }, index * 20); // Staggered fade-in
+                                observer.unobserve(entry.target);
+                            }
+                        });
+                    }, { threshold: 0.1 });
+                    observer.observe(productItem);
+
+                    // Add click listener to open modal
+                    productItem.addEventListener('click', () => openProductModal(product));
+                });
+            }
+
+            // Initial render of all products
+            renderProducts('all');
+
+            // Add event listeners to filter buttons
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    // Add active class to the clicked button
+                    this.classList.add('active');
+                    // Render products based on the data-filter attribute
+                    renderProducts(this.dataset.filter);
+                });
+            });
+
+            // Product Details Modal Logic
+            const productDetailModal = document.getElementById('productDetailModal');
+            const closeProductModalBtn = document.getElementById('closeProductModalBtn');
+            const productModalTitle = document.getElementById('productModalTitle');
+            const productModalBody = document.getElementById('productModalBody');
+
+            function openProductModal(product) {
+                productModalTitle.innerHTML = product.name;
+                productModalBody.innerHTML = ''; // Clear previous content
+
+                const img = document.createElement('img');
+                img.src = product.imageUrl;
+                img.alt = product.name;
+                productModalBody.appendChild(img);
+
+                productModalBody.innerHTML += product.fullDescription;
+
+                productDetailModal.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            }
+
+            closeProductModalBtn.addEventListener('click', function() {
+                productDetailModal.classList.remove('active');
+                document.body.style.overflow = ''; // Restore background scrolling
+            });
+
+            // Close modal when clicking outside the content
+            productDetailModal.addEventListener('click', function(event) {
+                if (event.target === productDetailModal) {
+                    productDetailModal.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
