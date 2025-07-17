@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FASHIONISTA - Men's Collection</title>
+    <title>FASHIONISTA - Information</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Bebas+Neue&family=Permanent+Marker&family=Passion+One:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZGqAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZGqAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         /* Basic Reset & Typography */
         body {
@@ -38,12 +38,12 @@
 
         a {
             text-decoration: none;
-            color: #0FA4AF; /* Vibrant Green Accent (retained for links not explicitly set to #00724a) */
+            color: #FFFFFF; /* Changed from #0FA4AF (aqua) to White */
         }
 
         a:hover {
             text-decoration: underline;
-            color: #0d838b; /* Darker Vibrant Green for hover */
+            color: #CCCCCC; /* Lighter white for hover */
         }
 
         /* Header - Main Navbar Bar */
@@ -155,7 +155,7 @@
 
         /* Active Nav Item Styling */
         nav ul li a.active-nav-item {
-            color: #ffffff !important; /* Vibrant Green */
+            color: #ffffff !important; /* Vibrant Green - kept for active highlight, not general links */
             font-weight: 700 !important;
         }
 
@@ -307,57 +307,152 @@
             border-radius: 2px;
         }
 
-        /* Product Grid for Men's Page */
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .product-item {
+        /* Information Section Specific Styles */
+        .info-section {
             background-color: #000000; /* Black */
-            border: 1px solid rgba(0, 114, 74, 0.3); /* Green border */
+            padding: 40px 0;
+            border-bottom: 1px solid rgba(0, 114, 74, 0.3); /* Green border */
+        }
+
+        .info-section:last-of-type {
+            border-bottom: none; /* No border on the last section */
+        }
+
+        .info-content {
             padding: 20px;
+            background-color: #000000; /* Black */
             border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            opacity: 0; /* Initial state for fade-in from bottom */
-            transform: translateY(20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-            text-align: center; /* ALIGN BUTTONS HORIZONTALLY */
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            margin-top: 20px;
         }
 
-        .product-item.is-visible {
+        .info-content h3 {
+            text-align: left;
+            color: #00724a; /* Green */
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+
+        .info-content p, .info-content ul, .info-content ol {
+            font-size: 1em;
+            line-height: 1.8;
+            color: #00724a; /* Green */
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .info-content ul, .info-content ol {
+            padding-left: 25px;
+        }
+
+        .info-content li {
+            margin-bottom: 8px;
+        }
+
+        /* FAQ Specific Styles */
+        .faq-item {
+            margin-bottom: 25px;
+            border-bottom: 1px dashed rgba(0, 114, 74, 0.2);
+            padding-bottom: 15px;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .faq-question {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.2em;
+            color: #FFFFFF; /* Changed from #0FA4AF (aqua) to White */
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            transition: color 0.2s ease;
+        }
+
+        .faq-question:hover {
+            color: #CCCCCC; /* Lighter white for hover */
+        }
+
+        .faq-question .icon {
+            font-size: 0.8em;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-question.active .icon {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            font-size: 0.95em;
+            color: #00724a;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out, opacity 0.4s ease-out;
+            opacity: 0;
+            padding-left: 10px;
+        }
+
+        .faq-answer.active {
+            max-height: 200px; /* Adjust as needed based on content */
             opacity: 1;
-            transform: translateY(0);
+            padding-top: 10px;
         }
 
-        .product-item:hover {
-            transform: translateY(-7px);
-            box-shadow: 0 8px 15px rgba(0,0,0,0.15);
+        /* Contact Us Form Styles */
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-width: 500px;
+            margin: 20px auto;
+            padding: 25px;
+            background-color: #000000; /* Black */
+            border: 1px solid rgba(0, 114, 74, 0.3);
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
 
-        .product-item img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 4px;
-            margin-bottom: 15px;
+        .contact-form label {
+            font-size: 1em;
+            color: #00724a;
+            margin-bottom: 5px;
+            text-align: left;
         }
 
-        .product-item h3 {
-            font-family: 'Passion One', sans-serif;
-            font-size: 1.5em;
-            margin-bottom: 10px;
-            color: #00724a; /* Green for product titles */
-            text-align: center;
+        .contact-form input[type="text"],
+        .contact-form input[type="email"],
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid rgba(0, 114, 74, 0.5);
+            border-radius: 5px;
+            background-color: #000000; /* Black */
+            color: #00724a;
+            font-family: 'Lato', sans-serif;
+            font-size: 1em;
+            box-sizing: border-box; /* Include padding in width */
         }
 
-        .product-item p {
-            font-size: 0.9em;
-            color: #00724a; /* Green for product item description */
-            margin-bottom: 15px;
-            text-align: center;
+        .contact-form input[type="text"]:focus,
+        .contact-form input[type="email"]:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: #0FA4AF; /* Vibrant Green on focus - kept for focus highlight */
+            box-shadow: 0 0 0 2px rgba(15, 164, 175, 0.3);
+        }
+
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .contact-form button.button {
+            align-self: center;
+            margin-top: 10px;
         }
 
         /* Footer Styles */
@@ -683,13 +778,12 @@
                     </div>
                 </li>
                 <li class="dropdown">
-                    <a href="#" class="dropbtn active-nav-item">Men's Section <span class="dropdown-icon">&#9660;</span></a>
+                    <a href="men.html" class="dropbtn">Men's Section <span class="dropdown-icon">&#9660;</span></a>
                     <div class="dropdown-content">
-                        <a href="#tank-tops">Tank Tops</a>
-                        <a href="#sneakers">Sneakers</a>
-                        <a href="#polo-tshirts">Polo t-shirts</a>
-                        <a href="#oversized-hoodies">Oversized Hoodies</a>
-                       
+                        <a href="men.html#polo-tshirts">Polo t-shirts</a>
+                        <a href="men.html#oversized-hoodies">Oversized Hoodies</a>
+                        <a href="men.html#sneakers">Sneakers</a>
+                        <a href="men.html#tank-tops">Tank Tops</a>
                     </div>
                 </li>
                 <li class="dropdown">
@@ -702,7 +796,7 @@
                     </div>
                 </li>
                 <li class="dropdown">
-                    <a href="#" class="dropbtn">Information <span class="dropdown-icon">&#9660;</span></a>
+                    <a href="information.html" class="dropbtn active-nav-item">Information <span class="dropdown-icon">&#9660;</span></a>
                     <div class="dropdown-content">
                         <a href="information.html#size-guide">Size Guide</a>
                         <a href="information.html#shipping-returns">Shipping & Returns</a>
@@ -716,120 +810,160 @@
     </header>
 
     <main>
-         
+        <section id="info-hero" class="section-padding">
             <div class="container">
-                <h1>Men's Collection: Redefine Your Style</h1>
-                <p style="text-align: center; font-size: 1.1em; color: #00724a;">Explore our latest collection designed for the modern man. From casual essentials to statement pieces, find your perfect fit.</p>
+                <h1>Important Information</h1>
+                <p style="text-align: center; font-size: 1.1em; color: #00724a;">Find all the details you need regarding our products, policies, and how to get in touch.</p>
             </div>
-             <section id="tank-tops" class="section-padding">
-            <div class="container">
-                <h2>Tank Tops</h2>
-                <div class="product-grid">
-                    <div class="product-item">
-                        <img src="imgs/wt.png" alt="White Tank Top">
-                        <h3>Essential White Tank</h3>
-                        <p>Soft and breathable, perfect for workouts or casual summer days.</p>
-                        <a href="#" class="button-small view-details-btn" data-product-id="men-tank-white">View Details</a>
-                    </div>
-                    <div class="product-item">
-                        <img src="imgs/nt.png" alt="Navy Blue Tank Top">
-                        <h3>Deep Ocean Tank</h3>
-                        <p>Classic navy for a cool and confident look. Moisture-wicking fabric.</p>
-                        <a href="#" class="button-small view-details-btn" data-product-id="men-tank-navy">View Details</a>
-                    </div>
-                    <div class="product-item">
-                        <img src="imgs/gt.png" alt="Charcoal Grey Tank Top">
-                        <h3>Charcoal Active Tank</h3>
-                        <p>Sporty and comfortable, designed for maximum movement.</p>
-                        <a href="#" class="button-small view-details-btn" data-product-id="men-tank-charcoal">View Details</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section id="sneakers" class="section-padding">
-            <div class="container">
-                <h2>Sneakers</h2>
-                <div class="product-grid">
-                    <div class="product-item">
-                        <img src="imgs/ws.png" alt="Classic White Sneakers">
-                        <h3>Classic White Sneakers</h3>
-                        <p>Clean and versatile, these white sneakers are a timeless addition to any outfit.</p>
-                        <a href="#" class="button-small view-details-btn" data-product-id="men-sneaker-white">View Details</a>
-                    </div>
-                    <div class="product-item">
-                        <img src="imgs/bs.png" alt="Urban High-Top Sneakers">
-                        <h3>Urban High-Top Sneakers</h3>
-                        <p>Elevate your street style with these comfortable and edgy black high-tops.</p>
-                        <a href="#" class="button-small view-details-btn" data-product-id="men-sneaker-black">View Details</a>
-                    </div>
-                    <div class="product-item">
-                        <img src="imgs/as.png" alt="Retro Runner Sneakers">
-                        <h3>Retro Runner Sneakers</h3>
-                        <p>Vintage-inspired design meets modern comfort in these stylish running shoes.</p>
-                        <a href="#" class="button-small view-details-btn" data-product-id="men-sneaker-retro">View Details</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section id="mens-hero" class="section-padding">
-
         </section>
 
-        <section id="polo-tshirts" class="section-padding">
+        <section id="size-guide" class="info-section section-padding">
             <div class="container">
-                <h2>Polo T-shirts</h2>
-                <div class="product-grid">
-                    <div class="product-item">
-                        <img src="imgs/gp2.png" alt="Green Polo T-shirt">
-                        <h3>Classic Green Polo</h3>
-                        <p>A timeless essential for a sharp, casual look. Made with breathable pique fabric.</p>
-                        <a href="#" class="button-small view-details-btn" data-product-id="men-polo-green">View Details</a>
-                    </div>
-                    <div class="product-item">
-                        <img src="imgs/pb.png" alt="Black Polo T-shirt">
-                        <h3>Stealth Black Polo</h3>
-                        <p>Sleek and versatile, perfect for any occasion. Elevate your everyday style.</p>
-                        <a href="#" class="button-small view-details-btn" data-product-id="men-polo-black">View Details</a>
-                    </div>
-                    <div class="product-item">
-                        <img src="imgs/ap2.png" alt="Aqua Polo T-shirt">
-                        <h3>Aqua Breeze Polo</h3>
-                        <p>Add a pop of color to your wardrobe. Lightweight and comfortable.</p>
-                        <a href="#" class="button-small view-details-btn" data-product-id="men-polo-aqua">View Details</a>
-                    </div>
+                <h2>Size Guide</h2>
+                <div class="info-content">
+                    <h3 style="color: #ffffff;">How to Measure</h3>
+                    <p>To ensure the best fit, please follow these guidelines:</p>
+                    <ul>
+                        <li><strong>Chest:</strong> Measure around the fullest part of your chest, keeping the tape measure horizontal.</li>
+                        <li><strong>Waist:</strong> Measure around the narrowest part of your waist (usually just above your belly button), keeping the tape horizontal.</li>
+                        <li><strong>Hips:</strong> Measure around the fullest part of your hips, keeping the tape horizontal.</li>
+                        <li><strong>Inseam:</strong> Measure from the top of your inner thigh down to the bottom of your ankle.</li>
+                    </ul>
+
+                    <h3 style="color: #ffffff;">Men's Apparel Size Chart (CM)</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Size</th>
+                                <th>Chest</th>
+                                <th>Waist</th>
+                                <th>Inseam</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>S</td>
+                                <td>86-91</td>
+                                <td>71-76</td>
+                                <td>76</td>
+                            </tr>
+                            <tr>
+                                <td>M</td>
+                                <td>92-99</td>
+                                <td>77-84</td>
+                                <td>78</td>
+                            </tr>
+                            <tr>
+                                <td>L</td>
+                                <td>100-107</td>
+                                <td>85-92</td>
+                                <td>80</td>
+                            </tr>
+                            <tr>
+                                <td>XL</td>
+                                <td>108-115</td>
+                                <td>93-100</td>
+                                <td>82</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p style="margin-top: 20px;"><em>Note: Sizes may vary slightly between styles. Please refer to individual product pages for specific fit recommendations.</em></p>
                 </div>
             </div>
         </section>
 
-        <section id="oversized-hoodies" class="section-padding">
+        <section id="shipping-returns" class="info-section section-padding">
             <div class="container">
-                <h2>Oversized Hoodies</h2>
-                <div class="product-grid">
-                    <div class="product-item">
-                        <img src="imgs/gh.png" alt="Grey Oversized Hoodie">
-                        <h3>Urban Grey Hoodie</h3>
-                        <p>Ultimate comfort and street style. Perfect for layering or lounging.</p>
-                        <a href="#" class="button-small view-details-btn" data-product-id="men-hoodie-grey">View Details</a>
+                <h2>Shipping & Returns</h2>
+                <div class="info-content">
+                    <h3 style="color: #ffffff;">Shipping Information</h3>
+                    <p>We offer worldwide shipping to bring Fashionista to your doorstep, no matter where you are.</p>
+                    <ul>
+                        <li><strong>Standard Shipping:</strong> 5-10 business days ($7.99, free on orders over $100)</li>
+                        <li><strong>Express Shipping:</strong> 2-4 business days ($19.99)</li>
+                    </ul>
+                    <p>Orders are processed within 1-2 business days. You will receive a tracking number via email once your order has shipped.</p>
+
+                    <h3 style="color: #ffffff;">Returns Policy</h3>
+                    <p>Your satisfaction is our priority. If you're not completely happy with your purchase, you can return it within 30 days of receipt for a full refund or exchange.</p>
+                    <p><strong>Conditions for Returns:</strong></p>
+                    <ul>
+                        <li>Items must be unworn, unwashed, and in their original condition with all tags attached.</li>
+                        <li>Proof of purchase is required.</li>
+                        <li>Sale items are final sale and cannot be returned or exchanged.</li>
+                    </ul>
+                    <p>To initiate a return, please contact our customer service team at <a href="mailto:support@fashionista.com">support@fashionista.com</a>.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="faq" class="info-section section-padding">
+            <div class="container">
+                <h2>Frequently Asked Questions</h2>
+                <div class="info-content">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            What payment methods do you accept? <span class="icon">&#9660;</span>
+                        </div>
+                        <div class="faq-answer">
+                            We accept major credit cards (Visa, MasterCard, American Express), PayPal, and Apple Pay.
+                        </div>
                     </div>
-                    <div class="product-item">
-                        <img src="imgs/fh.png" alt="Forest Green Oversized Hoodie">
-                        <h3>Forest Vibe Hoodie</h3>
-                        <p>Deep green tones for a natural, relaxed look. Soft fleece interior.</p>
-                        <a href="#" class="button-small view-details-btn" data-product-id="men-hoodie-forest">View Details</a>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            How can I track my order? <span class="icon">&#9660;</span>
+                        </div>
+                        <div class="faq-answer">
+                            Once your order ships, you will receive an email with a tracking number and a link to track your package. You can also log into your account on our website to view your order status.
+                        </div>
                     </div>
-                    <div class="product-item">
-                        <img src="imgs/ch.png" alt="Cream Oversized Hoodie">
-                        <h3>Cream Comfort Hoodie</h3>
-                        <p>Effortlessly chic and cozy. A versatile addition to your casual wear.</p>
-                        <a href="#" class="button-small view-details-btn" data-product-id="men-hoodie-cream">View Details</a>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            Do you offer international shipping? <span class="icon">&#9660;</span>
+                        </div>
+                        <div class="faq-answer">
+                            Yes, we offer worldwide shipping. Shipping costs and delivery times vary depending on your location. Please see our Shipping Information section for more details.
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            Can I change or cancel my order after it's placed? <span class="icon">&#9660;</span>
+                        </div>
+                        <div class="faq-answer">
+                            We process orders quickly, so changes or cancellations may not always be possible. Please contact us immediately at <a href="mailto:support@fashionista.com">support@fashionista.com</a> if you need to modify your order.
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        
+        <section id="contact-us" class="info-section section-padding">
+            <div class="container">
+                <h2>Contact Us</h2>
+                <div class="info-content">
+                    <p style="text-align: center;">Have questions or need assistance? We're here to help!</p>
+                    <div class="contact-form">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" required>
 
-      
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+
+                        <label for="subject">Subject:</label>
+                        <input type="text" id="subject" name="subject">
+
+                        <label for="message">Message:</label>
+                        <textarea id="message" name="message" required></textarea>
+
+                        <button type="submit" class="button">Send Message</button>
+                    </div>
+                    <p style="text-align: center; margin-top: 20px;">You can also reach us directly:</p>
+                    <p style="text-align: center;">Email: <a href="mailto:info@fashionista.com">info@fashionista.com</a></p>
+                    <p style="text-align: center;">Phone: +1 (555) 123-4567</p>
+                    <p style="text-align: center;">Our customer service team is available Monday - Friday, 9 AM - 5 PM EST.</p>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer>
@@ -900,205 +1034,33 @@
                 }
             });
 
-            // Intersection Observer for fade-in animations on product items
-            const productItems = document.querySelectorAll('.product-item');
+            // FAQ Accordion Logic
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', function() {
+                    const answer = this.nextElementSibling;
+                    const icon = this.querySelector('.icon');
 
-            const observerOptions = {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0.1
-            };
+                    // Close other open answers
+                    faqQuestions.forEach(otherQuestion => {
+                        if (otherQuestion !== this && otherQuestion.classList.contains('active')) {
+                            otherQuestion.classList.remove('active');
+                            otherQuestion.nextElementSibling.classList.remove('active');
+                            otherQuestion.querySelector('.icon').innerHTML = '&#9660;'; // Down arrow
+                        }
+                    });
 
-            const contentObserver = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const index = Array.from(productItems).indexOf(entry.target);
-                        setTimeout(() => {
-                            entry.target.classList.add('is-visible');
-                        }, index * 20); // Adjusted delay to 20ms for even faster fade-in
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, observerOptions);
-
-            // Observe all product items
-            productItems.forEach(item => {
-                contentObserver.observe(item);
-            });
-
-            // Product Data for Modals (Men's specific products)
-            const productData = {
-                'men-polo-green': {
-                    title: 'Classic Green Polo: Everyday Essential',
-                    fullDescription: `
-                        <p>The Classic Green Polo is a wardrobe staple, offering a perfect blend of comfort and timeless style. Crafted from premium pique cotton, it's breathable and soft, ideal for any casual or smart-casual setting.</p>
-                        <p>Features a ribbed collar, two-button placket, and a classic fit that ensures a polished look. Pair it with chinos for a refined ensemble or jeans for a relaxed vibe.</p>
-                        <p><strong>Material:</strong> 100% Pique Cotton</p>
-                        <p><strong>Care:</strong> Machine wash cold, tumble dry low.</p>
-                    `,
-                    imageUrl: 'imgs/gp2.png'
-                },
-                'men-polo-black': {
-                    title: 'Stealth Black Polo: Versatile & Modern',
-                    fullDescription: `
-                        <p>Our Stealth Black Polo is designed for versatility and a modern aesthetic. Its deep black hue makes it a sophisticated choice that can be dressed up or down with ease.</p>
-                        <p>Made from a soft, durable fabric that retains its shape and color after multiple washes. Features a subtle texture and a comfortable fit, perfect for day-to-night wear.</p>
-                        <p><strong>Material:</strong> 60% Cotton, 40% Polyester</p>
-                        <p><strong>Care:</strong> Machine wash cold, hang dry.</p>
-                    `,
-                    imageUrl: 'imgs/pb.png'
-                },
-                'men-polo-aqua': {
-                    title: 'Aqua Breeze Polo: Fresh & Vibrant',
-                    fullDescription: `
-                        <p>Inject a refreshing pop of color into your wardrobe with the Aqua Breeze Polo. Its vibrant aqua shade is perfect for warmer days, offering a cool and stylish look.</p>
-                        <p>Lightweight and highly breathable, this polo ensures maximum comfort even in humid conditions. Ideal for casual outings, beach days, or adding a lively touch to your everyday attire.</p>
-                        <p><strong>Material:</strong> 95% Cotton, 5% Spandex</p>
-                        <p><strong>Care:</strong> Machine wash cold, gentle cycle.</p>
-                    `,
-                    imageUrl: 'imgs/ap2.png'
-                },
-                'men-hoodie-grey': {
-                    title: 'Urban Grey Hoodie: Comfort & Style',
-                    fullDescription: `
-                        <p>The Urban Grey Hoodie is your go-to for effortless comfort and street-ready style. Its oversized fit provides a relaxed feel, while the soft fleece lining keeps you warm and cozy.</p>
-                        <p>Features a spacious hood with adjustable drawstrings and a large front kangaroo pocket. Perfect for casual wear, gym sessions, or simply chilling out.</p>
-                        <p><strong>Material:</strong> 80% Cotton, 20% Polyester Fleece</p>
-                        <p><strong>Care:</strong> Machine wash cold inside out, tumble dry low.</p>
-                    `,
-                    imageUrl: 'imgs/gh.png'
-                },
-                'men-hoodie-forest': {
-                    title: 'Forest Vibe Hoodie: Earthy & Relaxed',
-                    fullDescription: `
-                        <p>Embrace earthy tones with our Forest Vibe Hoodie. This oversized hoodie in a rich forest green offers a relaxed fit and incredibly soft feel, making it an instant favorite.</p>
-                        <p>Designed for comfort and style, it features ribbed cuffs and hem, and a cozy hood. Ideal for adding a touch of nature-inspired color to your casual wardrobe.</p>
-                        <p><strong>Material:</strong> 70% Cotton, 30% Recycled Polyester</p>
-                        <p><strong>Care:</strong> Machine wash cold, do not bleach.</p>
-                    `,
-                    imageUrl: 'imgs/fh.png'
-                },
-                'men-hoodie-cream': {
-                    title: 'Cream Comfort Hoodie: Chic & Cozy',
-                    fullDescription: `
-                        <p>The Cream Comfort Hoodie combines chic style with ultimate coziness. Its soft, neutral cream color makes it a versatile piece that pairs well with almost anything.</p>
-                        <p>With an oversized silhouette and a plush interior, it's perfect for those days when you want to feel comfortable without compromising on style. A must-have for your loungewear and casual collection.</p>
-                        <p><strong>Material:</strong> 100% Organic Cotton Fleece</p>
-                        <p><strong>Care:</strong> Hand wash cold or dry clean recommended.</p>
-                    `,
-                    imageUrl: 'imgs/ch.png'
-                },
-                'men-sneaker-white': {
-                    title: 'Classic White Sneakers: Timeless Style',
-                    fullDescription: `
-                        <p>Clean and effortlessly stylish, these Classic White Sneakers are a versatile foundation for any casual look. Crafted with a premium synthetic leather upper and a comfortable rubber sole, they offer all-day wearability.</p>
-                        <p>Their minimalist design makes them easy to pair with jeans, shorts, or even smart casual trousers. A true wardrobe essential for modern men.</p>
-                        <p><strong>Material:</strong> Synthetic Leather Upper, Rubber Sole</p>
-                        <p><strong>Care:</strong> Wipe clean with a damp cloth.</p>
-                    `,
-                    imageUrl: 'imgs/ws.png'
-                },
-                'men-sneaker-black': {
-                    title: 'Urban High-Top Sneakers: Edgy & Comfortable',
-                    fullDescription: `
-                        <p>Elevate your street style with our Urban High-Top Sneakers. These black high-tops feature a durable canvas upper and a cushioned sole for superior comfort. The ankle support and lace-up design provide a secure fit.</p>
-                        <p>Perfect for adding an edgy touch to your outfit, whether you're hitting the city streets or a casual gathering. Pair them with joggers or distressed jeans for a bold look.</p>
-                        <p><strong>Material:</strong> Canvas Upper, Rubber Sole</p>
-                        <p><strong>Care:</strong> Spot clean with mild detergent.</p>
-                    `,
-                    imageUrl: 'imgs/bs.png'
-                },
-                'men-sneaker-retro': {
-                    title: 'Retro Runner Sneakers: Vintage Vibe, Modern Comfort',
-                    fullDescription: `
-                        <p>Step back in time with our Retro Runner Sneakers, combining vintage-inspired design with modern comfort technology. These lightweight sneakers feature a breathable mesh upper with suede overlays for a classic athletic look.</p>
-                        <p>The responsive foam midsole provides excellent cushioning for all-day comfort, making them ideal for both active pursuits and casual wear. Stand out with a touch of nostalgia.</p>
-                        <p><strong>Material:</strong> Mesh & Suede Upper, Foam Midsole, Rubber Outsole</p>
-                        <p><strong>Care:</strong> Brush off dirt, hand wash with mild soap.</p>
-                    `,
-                    imageUrl: 'imgs/as.png'
-                },
-                'men-tank-white': {
-                    title: 'Essential White Tank: Breathable & Soft',
-                    fullDescription: `
-                        <p>The Essential White Tank is a must-have for its incredible softness and breathability. Perfect as a base layer or worn on its own for a clean, minimalist look.</p>
-                        <p>Made from high-quality cotton, it offers superior comfort and durability. Ideal for workouts, hot summer days, or simply relaxing at home.</p>
-                        <p><strong>Material:</strong> 100% Premium Cotton</p>
-                        <p><strong>Care:</strong> Machine wash cold, gentle cycle.</p>
-                    `,
-                    imageUrl: 'imgs/wt.png'
-                },
-                'men-tank-navy': {
-                    title: 'Deep Ocean Tank: Cool & Confident',
-                    fullDescription: `
-                        <p>Our Deep Ocean Tank in classic navy blue provides a cool and confident look. Its moisture-wicking properties make it excellent for active wear, keeping you dry and comfortable.</p>
-                        <p>Designed with a comfortable fit that allows for full range of motion. A versatile piece for your gym bag or casual summer wardrobe.</p>
-                        <p><strong>Material:</strong> 90% Polyester, 10% Spandex</p>
-                        <p><strong>Care:</strong> Machine wash cold, quick dry.</p>
-                    `,
-                    imageUrl: 'imgs/nt.png'
-                },
-                'men-tank-charcoal': {
-                    title: 'Charcoal Active Tank: Sporty & Comfortable',
-                    fullDescription: `
-                        <p>The Charcoal Active Tank is engineered for performance and comfort. Its dark charcoal grey color offers a sleek, sporty look, while the fabric ensures maximum breathability.</p>
-                        <p>Perfect for intense workouts, running, or any activity where freedom of movement is key. Its lightweight design makes it feel like a second skin.</p>
-                        <p><strong>Material:</strong> 85% Polyester, 15% Rayon</p>
-                        <p><strong>Care:</strong> Machine wash cold, air dry for best results.</p>
-                    `,
-                    imageUrl: 'imgs/gt.png'
-                }
-            };
-
-            const viewDetailsButtons = document.querySelectorAll('.view-details-btn');
-            const productDetailModal = document.getElementById('productDetailModal');
-            const closeProductModalBtn = document.getElementById('closeProductModalBtn');
-            const productModalTitle = document.getElementById('productModalTitle');
-            const productModalBody = document.getElementById('productModalBody');
-
-            // Function to open the modal with content
-            function openProductModal(product) {
-                productModalTitle.innerHTML = product.title;
-                // Clear previous content
-                productModalBody.innerHTML = '';
-
-                // Add image if available
-                if (product.imageUrl) {
-                    const img = document.createElement('img');
-                    img.src = product.imageUrl;
-                    img.alt = product.title;
-                    productModalBody.appendChild(img);
-                }
-                // Add description
-                productModalBody.innerHTML += product.fullDescription;
-
-                productDetailModal.classList.add('active');
-                document.body.style.overflow = 'hidden'; // Prevent background scrolling
-            }
-
-            viewDetailsButtons.forEach(button => {
-                button.addEventListener('click', function(event) {
-                    event.preventDefault(); // Prevent default link behavior
-                    const productId = this.dataset.productId;
-                    const product = productData[productId];
-                    if (product) {
-                        openProductModal(product);
+                    // Toggle current answer
+                    this.classList.toggle('active');
+                    answer.classList.toggle('active');
+                    if (this.classList.contains('active')) {
+                        icon.innerHTML = '&#9650;'; // Up arrow
+                    } else {
+                        icon.innerHTML = '&#9660;'; // Down arrow
                     }
                 });
             });
 
-            closeProductModalBtn.addEventListener('click', function() {
-                productDetailModal.classList.remove('active');
-                document.body.style.overflow = ''; // Restore background scrolling
-            });
-
-            // Close modal when clicking outside the content
-            productDetailModal.addEventListener('click', function(event) {
-                if (event.target === productDetailModal) {
-                    productDetailModal.classList.remove('active');
-                    document.body.style.overflow = '';
-                }
-            });
 
             // Smooth scrolling to section on page load if hash exists
             function scrollToHash() {
