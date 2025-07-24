@@ -488,6 +488,7 @@
             transform: translateY(20px);
             opacity: 0;
             transition: transform 0.3s ease, opacity 0.3s ease;
+            padding-top: 50px; /* Added padding-top to ensure space for the close button */
         }
 
         .modal-overlay.active .modal-content {
@@ -505,6 +506,7 @@
             color: #00724a; /* Green */
             cursor: pointer;
             transition: color 0.2s ease;
+            z-index: 10; /* Ensure button is on top */
         }
 
         .modal-close-button:hover {
@@ -579,6 +581,7 @@
             .modal-content {
                 padding: 20px;
                 max-width: 95%;
+                padding-top: 40px; /* Adjusted padding-top for smaller screens */
             }
             .modal-title {
                 font-size: 1.8em;
@@ -702,6 +705,16 @@
             footer .container {
                 gap: 15px;
             }
+
+            /* Modal adjustments for mobile */
+            .modal-content {
+                padding-top: 50px; /* Ensure sufficient padding on mobile for the close button */
+            }
+            .modal-close-button {
+                font-size: 1.8em; /* Keep it prominent */
+                top: 10px; /* Adjust top for better positioning */
+                right: 10px; /* Adjust right for better positioning */
+            }
         }
     </style>
 </head>
@@ -783,8 +796,7 @@
                     <button class="filter-button" data-filter="tank-tops">Tank Tops</button>
                 </div>
                 <div class="product-grid" id="productGrid">
-                    <!-- Products will be dynamically loaded here -->
-                </div>
+                    </div>
             </div>
         </section>
     </main>
