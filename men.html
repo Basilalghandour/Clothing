@@ -440,7 +440,7 @@
             width: 90%;
             max-height: 80vh;
             overflow-y: auto;
-            position: relative;
+            position: relative; /* Crucial for positioning the close button */
             transform: translateY(20px);
             opacity: 0;
             transition: transform 0.3s ease, opacity 0.3s ease;
@@ -461,6 +461,7 @@
             color: #00724a; /* Green */
             cursor: pointer;
             transition: color 0.2s ease;
+            z-index: 10; /* Ensure it's above content */
         }
 
         .modal-close-button:hover {
@@ -474,6 +475,7 @@
             margin-top: 0;
             margin-bottom: 20px;
             text-align: center;
+            padding-right: 30px; /* Add padding to prevent text from going under the close button */
         }
 
         .modal-body {
@@ -538,9 +540,12 @@
             }
             .modal-title {
                 font-size: 1.8em;
+                padding-right: 25px; /* Adjust for smaller screens */
             }
             .modal-close-button {
                 font-size: 1.5em;
+                top: 10px; /* Adjust top for smaller screens */
+                right: 10px; /* Adjust right for smaller screens */
             }
             .modal-body img {
                 max-width: 90%;
@@ -657,6 +662,22 @@
 
             footer .container {
                 gap: 15px;
+            }
+
+            /* Fix for modal button position on mobile */
+            .modal-content {
+                padding: 20px; /* General padding for content */
+                padding-top: 50px; /* Add top padding to make space for the button */
+            }
+
+            .modal-close-button {
+                top: 15px; /* Consistent top position */
+                right: 15px; /* Consistent right position */
+                font-size: 1.8em; /* Maintain size for easy tapping */
+            }
+
+            .modal-title {
+                padding-right: 0; /* Remove specific padding for mobile as button is outside flow */
             }
         }
     </style>
